@@ -293,17 +293,10 @@ uint32_t Lobby::GetNumberOfTables()
     return mTables.size();
 }
 /*****************************************************************************/
-uint32_t Lobby::AddUser(std::vector<Reply> &out)
+uint32_t Lobby::AddUser()
 {
     std::uint32_t uuid = mUserIds.TakeId();
     mStagingIds.AddId(uuid);
-
-    JsonObject json;
-    json.AddValue("cmd", "RequestLogin");
-    json.AddValue("uuid", uuid);
-
-    out.push_back(Reply(uuid, json));
-
     return uuid;
 }
 /*****************************************************************************/

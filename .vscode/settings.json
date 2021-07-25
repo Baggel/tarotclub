@@ -1,0 +1,14 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "makefile.makeDirectory": "src/wasm",
+    "makefile.makefilePath": "src/wasm/Makefile",
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "C_Cpp.default.includePath": [
+        "/usr/lib/include", 
+        "/usr/share/emscripten/system/include", 
+        "./lib/icl/json",
+        "./lib/icl/util",
+        "./src",
+
+    ]
+}

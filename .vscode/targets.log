@@ -1,0 +1,1229 @@
+make all -f "/home/anthony/git/personnel/tarotclub/src/wasm/Makefile" -C "/home/anthony/git/personnel/tarotclub/src/wasm" --print-data-base --no-builtin-variables --no-builtin-rules --question
+# make: Entering directory '/home/anthony/git/personnel/tarotclub/src/wasm'
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sun Jul 18 21:39:21 2021
+
+# Variables
+
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+GTK_RC_FILES = /etc/gtk/gtkrc:/home/anthony/.gtkrc:/home/anthony/.config/gtkrc
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-66dbeae2-3375-4557-a5c1-71ef4720920c.sock
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 22)
+VPATH := ../ ../../lib/icl/util ../ ../../lib/icl/json ../ ../../lib/icl/mbedtls/library
+# environment
+MANDATORY_PATH = /usr/share/gconf/plasma.mandatory.path
+# environment
+VSCODE_CWD = /home/anthony
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 3)
+BASE_NAME := tarotclub
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 12)
+TAROT_CORE_SRCS := Card.cpp Deck.cpp BasicClient.cpp Common.cpp Engine.cpp Identity.cpp Score.cpp Protocol.cpp Network.cpp Users.cpp
+# default
+MAKE_COMMAND := make
+# environment
+QT_ACCESSIBILITY = 1
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 32)
+INC_FLAGS := -I./ -I./build -I../ -I../build-tarotclub-srv-Desktop_Qt_5_15_2_GCC_64bit-Debug -I../tarotclub-tst -I../tarotclub-tst/manual_deals -I../tarotclub-tst/example_deals -I../tarotclub-tst/played_deals -I../build-tarotclub-tst-Desktop_Qt_5_15_2_GCC_64bit-Debug -I../wasm -I../wasm/build -I../tarotclub-bot -I../build-tarotclub-tst-Desktop_Qt_6_1_1_GCC_64bit-Debug -I../tarotclub-gui -I../tarotclub-gui/jsedit -I../tarotclub-gui/windows -I../tarotclub-gui/docks -I../tarotclub-gui/forms -I../gfxlib -I../tarotclub-cli -I../tarotclub-srv -I../tarotclub-srv/build-tcds -I../tarotclub-srv/build-tcds/release -I../tarotclub-srv/build-tcds/release/obj -I../build-tarotclub-gui-Desktop_Qt_5_15_2_GCC_64bit-Debug -I../build-tarotclub-gui-Desktop_Qt_6_1_1_GCC_64bit-Debug -I../../lib/icl/util -I../../lib/icl/json -I../../lib/icl/mbedtls/include/ -I../../lib/icl/mbedtls/include/mbedtls
+# default
+.VARIABLES := 
+# environment
+PWD = /home/anthony/git/personnel/tarotclub
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 6)
+OUTDIR := ./build
+# environment
+XDG_DATA_DIRS = /usr/share/plasma:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+# environment
+KIGITHUB = https://github.com/KiCad
+# environment
+LANG = C
+# environment
+XAUTHORITY = /home/anthony/.Xauthority
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrRw
+# environment
+KICAD_PATH = /usr/share/kicad
+# makefile
+CURDIR := /home/anthony/git/personnel/tarotclub/src/wasm
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+PAM_KWALLET5_LOGIN = /run/user/1000/kwallet5.socket
+# environment
+MFLAGS = -pqrRw
+# environment
+SSH_AUTH_SOCK = /tmp/ssh-D6h7Zh7TOWWA/agent.1904
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-plasma:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+XCURSOR_THEME = breeze_cursors
+# environment
+VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=aefdbcc6-ac3e-4bd5-bfa0-296433c62aa3&iid=aefdbcc6-ac3e-4bd5-bfa0-296433c62aa3&sid=aefdbcc6-ac3e-4bd5-bfa0-296433c62aa3","uploadToServer":true}
+# environment
+XDG_SESSION_DESKTOP = KDE
+# makefile (from 'build/JsonReader.d', line 1)
+MAKEFILE_LIST := /home/anthony/git/personnel/tarotclub/src/wasm/Makefile build/main.d build/Card.d build/Deck.d build/BasicClient.d build/Common.d build/Engine.d build/Identity.d build/Score.d build/Protocol.d build/Network.d build/Users.d build/Log.d build/Util.d build/JsonValue.d build/JsonReader.d
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 4931
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 14)
+MBED_TLS_SRCS := aes.c gcm.c cipher.c chachapoly.c chacha20.c poly1305.c cipher_wrap.c platform_util.c ccm.c blowfish.c arc4.c camellia.c des.c
+# environment
+SESSION_MANAGER = local/anthony-desktop:@/tmp/.ICE-unix/2187,unix/anthony-desktop:/tmp/.ICE-unix/2187
+# automatic
+*F = $(notdir $*)
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{},"_languagePackSupport":true}
+# environment
+BREAKPAD_DUMP_LOCATION = /home/anthony/.config/Code/exthost Crash Reports
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 65)
+MKDIR_P = mkdir -p
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# makefile
+SHELL = /bin/sh
+# default
+MAKECMDGOALS := all
+# environment
+PLATFORMIO_CALLER = vscode
+# environment
+SHLVL = 0
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 7)
+SRC_DIRS := ./ ../ ../../lib/icl/util ../../lib/icl/json ../../lib/icl/mbedtls/include/
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /home/anthony/.local/bin:/home/anthony/.local/bin/:/home/anthony/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# default
+MAKEFILES := 
+# environment
+LANGUAGE = 
+# automatic
+^F = $(notdir $^)
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 29)
+DEPENDENCIES := ./build/aes.d ./build/gcm.d ./build/cipher.d ./build/chachapoly.d ./build/chacha20.d ./build/poly1305.d ./build/cipher_wrap.d ./build/platform_util.d ./build/ccm.d ./build/blowfish.d ./build/arc4.d ./build/camellia.d ./build/des.d ./build/main.d ./build/Card.d ./build/Deck.d ./build/BasicClient.d ./build/Common.d ./build/Engine.d ./build/Identity.d ./build/Score.d ./build/Protocol.d ./build/Network.d ./build/Users.d ./build/Log.d ./build/Util.d ./build/JsonValue.d ./build/JsonReader.d
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# automatic
+?F = $(notdir $?)
+# environment
+KDE_APPLICATIONS_AS_SCOPE = 1
+# environment
+XDG_SEAT = seat0
+# environment
+NO_PROXY = 127.0.0.1
+# environment
+XDG_CURRENT_DESKTOP = KDE
+# environment
+LS_COLORS = 
+# automatic
++F = $(notdir $+)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+DESKTOP_SESSION = plasma
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = KDE
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 27)
+OBJECTS = $(addprefix $(OUTDIR)/,$(patsubst %.c, %.o, $(filter %.c,$(SOURCES)))) $(addprefix $(OUTDIR)/,$(patsubst %.cpp, %.o, $(filter %.cpp,$(SOURCES)))) $(addprefix $(OUTDIR)/,$(patsubst %.S, %.o, $(filter %.S,$(SOURCES)))) $(addprefix $(OUTDIR)/,$(patsubst %.s, %.o, $(filter %.s,$(SOURCES))))
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+LOGNAME = anthony
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 40)
+CPPFLAGS = -MMD -MP -std=c++17
+# environment
+PLATFORMIO_PATH = /home/anthony/.platformio/python3/bin:/home/anthony/.local/bin:/home/anthony/.local/bin/:/home/anthony/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+XDG_VTNR = 1
+# makefile
+.DEFAULT_GOAL := build/tarotclub.js
+# environment
+DISPLAY = :0
+# environment
+USER = anthony
+# environment
+DEFAULTS_PATH = /usr/share/gconf/plasma.default.path
+# environment
+KDE_SESSION_UID = 1000
+# default
+MAKE_VERSION := 4.3
+# 'override' directive
+.SHELLSTATUS := 0
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 41)
+LDFLAGS = -s LLD_REPORT_UNDEFINED -s RESERVED_FUNCTION_POINTERS=20 -s EXTRA_EXPORTED_RUNTIME_METHODS='["cwrap"]' -s EXPORT_ES6=1 -s MODULARIZE=1 -s USE_ES6_IMPORT_META=0 -s ENVIRONMENT='web','worker'
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 13)
+ICL_SRCS := Log.cpp Util.cpp JsonValue.cpp JsonReader.cpp
+# environment
+SSH_AGENT_PID = 2022
+# environment
+VSCODE_NODE_CACHED_DATA_DIR = /home/anthony/.config/Code/CachedData/507ce72a4466fbb27b715c3722558bb15afa9f48
+# environment
+_ = /usr/share/code/code
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 39)
+CFLAGS = -DUSE_LINUX_OS -s WASM=1 -s RESERVED_FUNCTION_POINTERS=20 -s EXTRA_EXPORTED_RUNTIME_METHODS='["cwrap"]' -s EXPORT_ES6=1 -s MODULARIZE=1 -s USE_ES6_IMPORT_META=0 -s ENVIRONMENT='web','worker'
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 4)
+TARGET_EXEC := tarotclub.js
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+PLATFORMIO_IDE = 2.3.2
+# environment
+GTK2_RC_FILES = /etc/gtk-2.0/gtkrc:/home/anthony/.gtkrc-2.0:/home/anthony/.config/gtkrc-2.0
+# environment
+HOME = /home/anthony
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-b1e83f56-1.57.1-main.sock
+# environment
+XDG_SESSION_ID = 3
+# environment
+XCURSOR_SIZE = 24
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 31)
+INC_DIRS := ./ ./build ../ ../build-tarotclub-srv-Desktop_Qt_5_15_2_GCC_64bit-Debug ../tarotclub-tst ../tarotclub-tst/manual_deals ../tarotclub-tst/example_deals ../tarotclub-tst/played_deals ../build-tarotclub-tst-Desktop_Qt_5_15_2_GCC_64bit-Debug ../wasm ../wasm/build ../tarotclub-bot ../build-tarotclub-tst-Desktop_Qt_6_1_1_GCC_64bit-Debug ../tarotclub-gui ../tarotclub-gui/jsedit ../tarotclub-gui/windows ../tarotclub-gui/docks ../tarotclub-gui/forms ../gfxlib ../tarotclub-cli ../tarotclub-srv ../tarotclub-srv/build-tcds ../tarotclub-srv/build-tcds/release ../tarotclub-srv/build-tcds/release/obj ../build-tarotclub-gui-Desktop_Qt_5_15_2_GCC_64bit-Debug ../build-tarotclub-gui-Desktop_Qt_6_1_1_GCC_64bit-Debug ../../lib/icl/util ../../lib/icl/json ../../lib/icl/mbedtls/include/ ../../lib/icl/mbedtls/include/mbedtls
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+QT_AUTO_SCREEN_SCALE_FACTOR = 0
+# environment
+KDE_SESSION_VERSION = 5
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 10)
+CXX = em++
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 9)
+CC = emcc
+# makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 18)
+SOURCES = main.cpp $(TAROT_CORE_SRCS) $(ICL_SRCS) $(MBED_TLS_SRCS)
+# environment
+KDE_FULL_SESSION = true
+# variable set hash-table stats:
+# Load=126/1024=12%, Rehash=0, Collisions=6/268=2%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+ 
+
+# Directories
+
+# ../../lib/icl/mbedtls/library (device 66307, inode 20321390): 84 files, no impossibilities.
+# .. (device 66307, inode 17843269): 59 files, no impossibilities.
+# . (device 66307, inode 17828777): 13 files, no impossibilities.
+# ../../lib/icl/json (device 66307, inode 19546923): 8 files, no impossibilities.
+# ../../lib/icl/util (device 66307, inode 19546917): 28 files, no impossibilities.
+
+# 192 files, no impossibilities in 5 directories.
+
+# Implicit Rules
+
+build/%.o: %.c
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+build/%.o: %.cpp
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# 2 implicit rules, 0 (0.0%) terminal.
+# Files
+
+# Not a target:
+../Engine.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-12 21:35:58.578979736
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/des.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+../Protocol.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-06-25 21:00:18.872668409
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/icl/util/Log.h:
+#  Implicit rule search has been done.
+#  Last modified 2020-07-20 09:39:18.757778811
+#  File has been updated.
+#  Successfully updated.
+
+../TournamentConfig.h:
+#  Implicit rule search has been done.
+#  Last modified 2017-06-11 22:02:45.476177585
+#  File has been updated.
+#  Successfully updated.
+
+build/Protocol.o: ../Protocol.cpp ../Protocol.cpp ../Protocol.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h ../../lib/icl/util/Util.h ../../lib/icl/mbedtls/include/mbedtls/md.h ../../lib/icl/mbedtls/include/mbedtls/config.h ../../lib/icl/mbedtls/include/mbedtls/check_config.h ../../lib/icl/mbedtls/include/mbedtls/sha256.h ../../lib/icl/mbedtls/include/mbedtls/gcm.h ../../lib/icl/mbedtls/include/mbedtls/cipher.h ../../lib/icl/mbedtls/include/mbedtls/platform_util.h ../../lib/icl/mbedtls/include/mbedtls/platform_time.h ../../lib/icl/mbedtls/include/mbedtls/aes.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Protocol'
+#  Last modified 2021-07-05 09:33:22.519773587
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+../../lib/icl/json/JsonValue.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.434227301
+#  File has been updated.
+#  Successfully updated.
+
+build/tarotclub.js: build/aes.o build/gcm.o build/cipher.o build/chachapoly.o build/chacha20.o build/poly1305.o build/cipher_wrap.o build/platform_util.o build/ccm.o build/blowfish.o build/arc4.o build/camellia.o build/des.o build/main.o build/Card.o build/Deck.o build/BasicClient.o build/Common.o build/Engine.o build/Identity.o build/Score.o build/Protocol.o build/Network.o build/Users.o build/Log.o build/Util.o build/JsonValue.o build/JsonReader.o
+#  Implicit rule search has not been done.
+#  Last modified 2021-07-16 09:55:29.677831629
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 44):
+	$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
+
+../../lib/icl/mbedtls/include/mbedtls/platform_util.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.446228141
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/icl/mbedtls/include/mbedtls/platform_time.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.446228141
+#  File has been updated.
+#  Successfully updated.
+
+../Deck.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-10 07:16:02.77845075
+#  File has been updated.
+#  Successfully updated.
+
+build/blowfish.o: ../../lib/icl/mbedtls/library/blowfish.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'blowfish'
+#  Last modified 2021-07-15 22:26:26.224104611
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+build/gcm.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+../../lib/icl/mbedtls/include/mbedtls/gcm.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.446228141
+#  File has been updated.
+#  Successfully updated.
+
+build/Deck.o: ../Deck.cpp ../Deck.cpp ../Deck.h ../Card.h ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Deck'
+#  Last modified 2021-07-05 09:33:16.214756814
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+../Card.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-11 22:53:41.557776463
+#  File has been updated.
+#  Successfully updated.
+
+build/Network.o: ../Network.cpp ../Network.cpp ../Network.h ../../lib/icl/json/JsonValue.h ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h ../Identity.h ../Protocol.h ../Users.h ../../lib/icl/util/UniqueId.h ../Engine.h ../Card.h ../Deck.h ../ServerConfig.h ../Score.h ../TournamentConfig.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Network'
+#  Last modified 2021-07-14 21:19:01.084631973
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+../../lib/icl/util/Log.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2020-07-20 09:39:18.757778811
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/icl/mbedtls/include/mbedtls/check_config.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.446228141
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../../lib/icl/mbedtls/library/cipher_wrap.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../Deck.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-10 14:09:47.561050658
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../Protocol.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-06-25 20:52:14.327047352
+#  File has been updated.
+#  Successfully updated.
+
+build/arc4.o: ../../lib/icl/mbedtls/library/arc4.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'arc4'
+#  Last modified 2021-07-15 22:26:53.339929816
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+../../lib/icl/mbedtls/library/camellia.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/Protocol.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 09:33:22.519773587
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/JsonReader.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-14 21:20:18.043947017
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../BasicClient.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 10:12:39.045357292
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../Score.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-12 21:57:05.323392514
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../Identity.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2017-06-11 22:02:45.476177585
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/icl/mbedtls/include/mbedtls/config.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.442227862
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/arc4.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+build/Log.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 09:33:23.755972943
+#  File has been updated.
+#  Successfully updated.
+
+build/platform_util.o: ../../lib/icl/mbedtls/library/platform_util.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'platform_util'
+#  Last modified 2021-07-15 22:25:51.080330792
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+build/Score.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 09:33:21.503609715
+#  File has been updated.
+#  Successfully updated.
+
+build/gcm.o: ../../lib/icl/mbedtls/library/gcm.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'gcm'
+#  Last modified 2021-07-14 21:24:38.841749404
+ 
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+build/camellia.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+build/ccm.o: ../../lib/icl/mbedtls/library/ccm.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'ccm'
+#  Last modified 2021-07-15 22:26:25.988106131
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 61):
+	$(RM) -rf $(OUTDIR)
+
+# Not a target:
+../../lib/icl/mbedtls/library/gcm.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.454228702
+#  File has been updated.
+#  Successfully updated.
+
+build/BasicClient.o: ../BasicClient.cpp ../BasicClient.cpp ../BasicClient.h ../Network.h ../../lib/icl/json/JsonValue.h ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h ../Identity.h ../Protocol.h ../Users.h ../../lib/icl/util/UniqueId.h ../Engine.h ../Card.h ../Deck.h ../ServerConfig.h ../Score.h ../TournamentConfig.h ../../lib/icl/json/JsonReader.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'BasicClient'
+#  Last modified 2021-07-14 21:18:14.421057597
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+../../lib/icl/util/Util.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-06-04 15:28:07.460207116
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/JsonValue.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-14 21:20:16.507960497
+#  File has been updated.
+#  Successfully updated.
+
+build/Common.o: ../Common.cpp ../Common.cpp ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Common'
+#  Last modified 2021-07-05 09:33:18.543132296
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+build/cipher.o: ../../lib/icl/mbedtls/library/cipher.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'cipher'
+#  Last modified 2021-07-14 21:47:40.788468079
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+build/Users.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-14 21:23:03.846531101
+#  File has been updated.
+#  Successfully updated.
+
+build/Score.o: ../Score.cpp ../Score.cpp ../Score.h ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h ../TournamentConfig.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Score'
+#  Last modified 2021-07-05 09:33:21.503609715
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+build/poly1305.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+/home/anthony/git/personnel/tarotclub/src/wasm/Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-16 13:29:54.6718582
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../Card.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-11 22:54:20.95792014
+#  File has been updated.
+#  Successfully updated.
+
+build/Card.o: ../Card.cpp ../Card.cpp ../Card.h ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Card'
+#  Last modified 2021-07-05 09:33:15.218596169
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+../Score.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-12 15:54:35.622441525
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/icl/json/JsonValue.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-06-04 15:28:07.452207267
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../../lib/icl/mbedtls/library/poly1305.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.458228982
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/icl/json/JsonReader.h:
+#  Implicit rule search has been done.
+#  Last modified 2020-07-20 09:39:18.689783611
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/Engine.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 09:33:19.935356812
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/aes.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+../../lib/icl/json/JsonReader.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-06-04 15:28:07.452207267
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/Identity.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 09:33:20.427436168
+#  File has been updated.
+#  Successfully updated.
+
+build/Engine.o: ../Engine.cpp ../Engine.cpp ../Engine.h ../Card.h ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h ../Deck.h ../ServerConfig.h ../../lib/icl/json/JsonValue.h ../Score.h ../TournamentConfig.h ../DealGenerator.h ../Identity.h ../System.h ../../lib/icl/json/JsonReader.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Engine'
+#  Last modified 2021-07-05 09:33:19.935356812
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+build/cipher_wrap.o: ../../lib/icl/mbedtls/library/cipher_wrap.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'cipher_wrap'
+#  Last modified 2021-07-15 21:58:16.357001682
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+build/Deck.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 09:33:16.214756814
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/chachapoly.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+../../lib/icl/mbedtls/include/mbedtls/md.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.446228141
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../Network.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-12 10:25:54.125850749
+#  File has been updated.
+#  Successfully updated.
+
+build/chacha20.o: ../../lib/icl/mbedtls/library/chacha20.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'chacha20'
+#  Last modified 2021-07-15 21:57:30.137083859
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+build/Util.o: ../../lib/icl/util/Util.cpp ../../lib/icl/util/Util.cpp ../../lib/icl/util/Util.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Util'
+#  Last modified 2021-07-05 09:33:25.66828133
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+../Network.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 10:24:39.490438086
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/Util.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 09:33:25.672281977
+#  File has been updated.
+#  Successfully updated.
+
+build/des.o: ../../lib/icl/mbedtls/library/des.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'des'
+#  Last modified 2021-07-15 22:27:11.155814843
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+ 
+#  File has not been updated.
+
+../../lib/icl/util/Observer.h:
+#  Implicit rule search has been done.
+#  Last modified 2020-07-20 09:39:18.757778811
+#  File has been updated.
+#  Successfully updated.
+
+../Engine.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-12 16:37:29.875792895
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../Common.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-12 15:48:11.719920556
+#  File has been updated.
+#  Successfully updated.
+
+all: build/tarotclub.js
+#  Command line target.
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := all
+# automatic
+# * := 
+# automatic
+# < := build/tarotclub.js
+# automatic
+# + := build/tarotclub.js
+# automatic
+# % := 
+# automatic
+# ^ := build/tarotclub.js
+# automatic
+# ? := build/tarotclub.js
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=3/15=20%
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 57):
+	cp $(OUTDIR)/$(TARGET_EXEC) ../../../tarotclub-www/client/src/
+	cp $(OUTDIR)/$(BASE_NAME).wasm ../../../tarotclub-www/client/public/
+
+# Not a target:
+../../lib/icl/mbedtls/library/blowfish.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../../lib/icl/mbedtls/library/chacha20.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+build/camellia.o: ../../lib/icl/mbedtls/library/camellia.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'camellia'
+#  Last modified 2021-07-15 22:26:53.615928035
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+../../lib/icl/util/Util.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-06-04 15:28:07.460207116
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../../lib/icl/mbedtls/library/aes.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/cipher_wrap.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+main.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-16 09:54:45.278125435
+#  File has been updated.
+#  Successfully updated.
+
+../System.h:
+#  Implicit rule search has been done.
+#  Last modified 2017-06-11 22:02:45.476177585
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../../lib/icl/mbedtls/library/chachapoly.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+build/JsonReader.o: ../../lib/icl/json/JsonReader.cpp ../../lib/icl/json/JsonReader.cpp ../../lib/icl/json/JsonReader.h ../../lib/icl/json/JsonValue.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'JsonReader'
+#  Last modified 2021-07-14 21:20:18.043947017
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+build/Network.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-14 21:19:01.084631973
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/main.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-16 09:55:27.945843075
+#  File has been updated.
+#  Successfully updated.
+
+build/poly1305.o: ../../lib/icl/mbedtls/library/poly1305.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'poly1305'
+#  Last modified 2021-07-15 21:57:52.389046817
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+../../lib/icl/mbedtls/include/mbedtls/sha256.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.446228141
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/blowfish.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+../Common.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-12 21:42:19.894231362
+#  File has been updated.
+#  Successfully updated.
+
+build/Identity.o: ../Identity.cpp ../Identity.cpp ../Identity.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Identity'
+#  Last modified 2021-07-05 09:33:20.427436168
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+../ServerConfig.h:
+#  Implicit rule search has been done.
+#  Last modified 2020-07-29 14:40:31.804564396
+#  File has been updated.
+#  Successfully updated.
+
+build/JsonValue.o: ../../lib/icl/json/JsonValue.cpp ../../lib/icl/json/JsonValue.cpp ../../lib/icl/json/JsonValue.h ../../lib/icl/util/Util.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'JsonValue'
+#  Last modified 2021-07-14 21:20:16.503960532
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+build/chacha20.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+../../lib/icl/mbedtls/library/ccm.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+../../lib/icl/mbedtls/library/des.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/cipher.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+../DealGenerator.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-11 17:54:51.47465008
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/icl/util/UniqueId.h:
+#  Implicit rule search has been done.
+#  Last modified 2020-07-20 09:39:18.757778811
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/ccm.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+build/aes.o: ../../lib/icl/mbedtls/library/aes.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'aes'
+#  Last modified 2021-07-14 21:24:38.617751225
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+../Users.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2017-06-11 22:02:45.476177585
+#  File has been updated.
+#  Successfully updated.
+
+../BasicClient.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 10:09:30.425688479
+#  File has been updated.
+#  Successfully updated.
+
+build/Log.o: ../../lib/icl/util/Log.cpp ../../lib/icl/util/Log.cpp ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h ../../lib/icl/util/Util.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Log'
+#  Last modified 2021-07-05 09:33:23.755972943
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+build/Users.o: ../Users.cpp ../Users.cpp ../Users.h ../../lib/icl/util/UniqueId.h ../Identity.h ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h ../Protocol.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Users'
+#  Last modified 2021-07-14 21:23:03.834531201
+ 
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+../../lib/icl/mbedtls/library/platform_util.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.454228702
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/platform_util.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+build/Card.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 09:33:15.218596169
+#  File has been updated.
+#  Successfully updated.
+
+../Identity.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-10 10:28:25.997712965
+#  File has been updated.
+#  Successfully updated.
+
+build/chachapoly.o: ../../lib/icl/mbedtls/library/chachapoly.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'chachapoly'
+#  Last modified 2021-07-15 21:56:33.389155656
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 48):
+	$(MKDIR_P) $(dir $@)
+	$(CC) $(CFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+../../lib/icl/mbedtls/library/cipher.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+../../lib/icl/mbedtls/include/mbedtls/cipher.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.442227862
+#  File has been updated.
+#  Successfully updated.
+
+build/main.o: main.cpp main.cpp ../../lib/icl/json/JsonReader.h ../../lib/icl/json/JsonValue.h ../Protocol.h ../BasicClient.h ../Network.h ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h ../Identity.h ../Users.h ../../lib/icl/util/UniqueId.h ../Engine.h ../Card.h ../Deck.h ../ServerConfig.h ../Score.h ../TournamentConfig.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2021-07-16 09:55:27.941843101
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 53):
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+# Not a target:
+../../lib/icl/mbedtls/library/arc4.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.450228422
+#  File has been updated.
+#  Successfully updated.
+
+../../lib/icl/mbedtls/include/mbedtls/aes.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-02-08 15:28:17.438227582
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/Common.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-05 09:33:18.543132296
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+build/BasicClient.d:
+#  Implicit rule search has been done.
+#  Last modified 2021-07-14 21:18:14.421057597
+#  File has been updated.
+#  Successfully updated.
+
+../Users.h:
+#  Implicit rule search has been done.
+#  Last modified 2017-06-11 22:02:45.476177585
+#  File has been updated.
+#  Successfully updated.
+
+# files hash-table stats:
+# Load=119/1024=12%, Rehash=0, Collisions=109/986=11%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# General ('VPATH' variable) search path:
+# ..:../../lib/icl/util:..:../../lib/icl/json:..:../../lib/icl/mbedtls/library
+
+# strcache buffers: 1 (0) / strings = 354 / storage = 5351 B / avg = 15 B
+# current buf: size = 8162 B / used = 5351 B / count = 354 / avg = 15 B
+
+# strcache performance: lookups = 862 / hit rate = 58%
+# hash-table stats:
+# Load=354/8192=4%, Rehash=0, Collisions=17/862=2%
+# Finished Make data base on Sun Jul 18 21:39:21 2021
+
+# make: Leaving directory '/home/anthony/git/personnel/tarotclub/src/wasm'
+ 

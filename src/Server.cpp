@@ -55,13 +55,26 @@ void Server::Start(const ServerOptions &opt)
 /*****************************************************************************/
 void Server::NewConnection(const tcp::Conn &conn)
 {
+    /**
+     * Ici on ne fait qu'attribuer un UUID à ce client distant
+     * C'est au client d'initier la connexion
+     */
     PeerSession session;
-    std::vector<Reply> out;
-
-    std::uint32_t uuid = mNetListener.AddUser(out);
+    std::uint32_t uuid = mNetListener.AddUser();
     session.peer = conn.peer;
     mPeers[uuid] = session;
+
+/*
+ *   std::vector<Reply> out;
+    JsonObject json;
+    json.AddValue("cmd", "RequestLogin");
+    json.AddValue("uuid", uuid);
+
+    out.push_back(Reply(uuid, json));
+
+
     Send(out);
+    */
 }
 /*****************************************************************************/
 /**

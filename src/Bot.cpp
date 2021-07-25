@@ -50,12 +50,17 @@ bool Bot::Decode(uint32_t src_uuid, uint32_t dest_uuid, const std::string &arg, 
     bool ret = true;
 
     // Generic client decoder, fill the context and the client structure
-    BasicClient::Event event = mClient.Decode(src_uuid, dest_uuid, arg, mClient.mCtx, out);
+    BasicClient::Event event = mClient.Decode(src_uuid, dest_uuid, arg, mClient.mCtx);
 
     switch (event)
     {
     case BasicClient::ACCESS_GRANTED:
     {
+        JsonObject obj;
+        obj.AddValue("cmd", "ReplyLogin");
+        ToJson(mClient.mMyself.identity, obj);
+        out.push_back(Reply(Protocol::LOBBY_UID, obj));
+
         // As soon as we have entered into the lobby, join the assigned table
         mClient.BuildJoinTable(mClient.mTableToJoin, out);
         break;

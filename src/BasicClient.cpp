@@ -273,12 +273,17 @@ bool BasicClient::PlayRandom(uint32_t src_uuid, uint32_t dest_uuid, const std::s
     bool ret = true;
 
     // Generic client decoder, fill the context and the client structure
-    BasicClient::Event event = Decode(src_uuid, dest_uuid, arg, mCtx, out);
+    BasicClient::Event event = Decode(src_uuid, dest_uuid, arg, mCtx);
 
     switch (event)
     {
     case BasicClient::ACCESS_GRANTED:
     {
+        JsonObject obj;
+        obj.AddValue("cmd", "ReplyLogin");
+        ToJson(mMyself.identity, obj);
+        out.push_back(Reply(Protocol::LOBBY_UID, obj));
+
         // As soon as we have entered into the lobby, join the assigned table
         BuildJoinTable(mTableToJoin, out);
         break;
@@ -429,7 +434,7 @@ bool BasicClient::PlayRandom(uint32_t src_uuid, uint32_t dest_uuid, const std::s
     return ret;
 }
 /*****************************************************************************/
-BasicClient::Event BasicClient::Decode(uint32_t src_uuid, uint32_t dest_uuid, const std::string &arg, IContext &ctx, std::vector<Reply> &out)
+BasicClient::Event BasicClient::Decode(uint32_t src_uuid, uint32_t dest_uuid, const std::string &arg, IContext &ctx)
 {
     (void) src_uuid;
     (void) dest_uuid;
@@ -450,14 +455,6 @@ BasicClient::Event BasicClient::Decode(uint32_t src_uuid, uint32_t dest_uuid, co
         ctx.Initialize();
 
         mMyself.uuid = static_cast<std::uint32_t>(json.FindValue("uuid").GetInteger());
-
-        JsonObject obj;
-
-        obj.AddValue("cmd", "ReplyLogin");
-        ToJson(mMyself.identity, obj);
-
-        out.push_back(Reply(Protocol::LOBBY_UID, obj));
-
         event = REQ_LOGIN;
     }
     else if (cmd == "AccessGranted")

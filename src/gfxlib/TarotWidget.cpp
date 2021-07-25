@@ -176,7 +176,7 @@ void TarotWidget::customEvent(QEvent *e)
         TarotEvent *ev = dynamic_cast<TarotEvent *>(e);
 
         // Generic client decoder, fill the context and the client structure
-        BasicClient::Event event = mClient.Decode(ev->src_uuid, ev->dst_uuid, ev->arg, mCtx, out);
+        BasicClient::Event event = mClient.Decode(ev->src_uuid, ev->dst_uuid, ev->arg, mCtx);
 
         switch (event)
         {

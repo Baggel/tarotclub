@@ -42,7 +42,7 @@ private:
         {
             return mBot.Decode(src_uuid, dest_uuid, arg, out);
         }
-        virtual std::uint32_t AddUser(std::vector<Reply> &/*out*/) { return 0U; /* stub */ }
+        virtual std::uint32_t AddUser() { return 0U; /* stub */ }
         virtual void RemoveUser(std::uint32_t /* uuid */, std::vector<Reply> &/*out*/) {}
         std::uint32_t GetUuid() { return mBot.GetUuid(); }
     };

@@ -57,7 +57,7 @@ public:
     // From IEvent
     void Signal(std::uint32_t sig);
     bool Deliver(std::uint32_t src_uuid, std::uint32_t dest_uuid, const std::string &arg, std::vector<Reply> &out);
-    std::uint32_t AddUser(std::vector<Reply> &out);
+    std::uint32_t AddUser();
     void RemoveUser(std::uint32_t uuid, std::vector<Reply> &out);
     std::uint32_t GetUuid() { return Protocol::LOBBY_UID; }
 

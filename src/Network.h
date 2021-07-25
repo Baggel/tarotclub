@@ -184,7 +184,7 @@ public:
 
     virtual void Signal(std::uint32_t sig) = 0;
     virtual bool Deliver(std::uint32_t src_uuid, std::uint32_t dest_uuid, const std::string &arg, std::vector<Reply> &out) = 0;
-    virtual std::uint32_t AddUser(std::vector<Reply> &out) = 0;
+    virtual std::uint32_t AddUser() = 0;
     virtual void RemoveUser(std::uint32_t uuid, std::vector<Reply> &out) = 0;
     virtual std::uint32_t GetUuid() = 0;
 };

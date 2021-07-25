@@ -114,7 +114,7 @@ public:
     EmptyContext mCtx;
     std::uint32_t mTableToJoin;
 
-    Event Decode(uint32_t src_uuid, uint32_t dest_uuid, const std::string &arg, IContext &ctx, std::vector<Reply> &out);
+    Event Decode(uint32_t src_uuid, uint32_t dest_uuid, const std::string &arg, IContext &ctx);
     bool PlayRandom(uint32_t src_uuid, uint32_t dest_uuid, const std::string &arg, std::vector<Reply> &out);
 private:
     void GetPlayerStatus(Users::Entry &member, JsonObject &player);
