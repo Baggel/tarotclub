@@ -23,3 +23,9 @@ src/tarotclub-srv/tarotclub-srv.pro.user.7e93c85
 src/tarotclub-tst/tarotclub-tst.pro.user.7e93c85
 
 www/dist/
+
+www/server/node_modules/
+
+www/client/node_modules/
+
+workspace/logs/

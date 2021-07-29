@@ -1,0 +1,34 @@
+{
+  "name": "tarotclub-www-server",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Back-end code for TarotClub project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config app.js dotenv_config_path=/home/tarot/tarotclub.env",
+    "debug": "node -r dotenv/config --inspect=9229 --inspect-brk=9229 --nolazy app.js dotenv_config_path=../tarotclub.env"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "eslint": "^6.4.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "helmet": "^3.21.2",
+    "imapflow": "^1.0.33",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "node-schedule": "^1.3.2",
+    "nodemailer": "^6.3.1",
+    "pg-promise": "^10.3.1",
+    "uniqid": "^5.2.0",
+    "ws": "^7.4.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

@@ -63,6 +63,7 @@ bool ServerConfig::Load(const std::string &fileName)
     bool ret = JsonReader::ParseFile(json, fileName);
     if (ret)
     {
+        TLogInfo("[SERVER] Opening configuration file: " + fileName);
         std::string stringVal;
         if (json.GetValue("version", stringVal))
         {
