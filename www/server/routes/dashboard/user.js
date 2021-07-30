@@ -1,8 +1,8 @@
-const router = require('express').Router();
 const queries = require('../../sql/queries.js');
+const jwtUtil = require("../jwtutil.js");
 
-router.post('/profile', (req, res) => {
-
+function setProfile (req, reply)
+{
     queries.getUserByUsername(req.jwt.user.username
         ).then(function (data) {
         if (data.length > 0) {
@@ -15,14 +15,14 @@ router.post('/profile', (req, res) => {
                 req.body.tel,
                 req.jwt.user.username
             ).then(function() {
-                res.status(200).json({
+                reply.code(200).send({
                     success: true,
                     message: "Profile updated"
                 });
 
             }).catch(function (err) {
                 console.log("[USER] Profile is not updated: " + err.message);
-                res.status(200).json({
+                reply.code(200).send({
                     success: false,
                     message: err.message
                 });
@@ -30,26 +30,25 @@ router.post('/profile', (req, res) => {
 
         } else {
             console.log("[USER] Get username failure");
-            res.status(200).json({
+            reply.code(200).send({
                 success: false,
                 message: 'Cannot update user'
             });
         }
     }).catch(function (err) {
-        res.status(200).json({
+        reply.code(200).send({
             success: false,
             message: err.message
         });
     });
-});
+}
 
-router.get('/profile', (req, res) => {
-
+function getProfile (req, reply)
+{
     queries.getUserByUsername(req.jwt.user.username
     ).then(function (data) {
-
         if (data.length > 0) {
-            res.status(200).json({
+            reply.code(200).send({
                 success: true,
                 data: {
                     profile: {
@@ -67,19 +66,22 @@ router.get('/profile', (req, res) => {
             })
         } else {
             console.log("[USER] Get profile failure");
-            res.status(200).json({
+            reply.code(200).send({
                 success: false,
                 message: 'No user'
             });
         }
 
     }).catch(function (err) {
-        res.status(200).json({
+        reply.code(200).send({
             success: false,
             message: err.message
         });
     });
-});
+}
 
+module.exports = async function (fastify) {
 
-module.exports = router;
+    fastify.get('/profile', { preHandler: jwtUtil.checkTokenAllUsers }, getProfile);
+    fastify.post('/profile', { preHandler: jwtUtil.checkTokenAllUsers }, setProfile);
+}

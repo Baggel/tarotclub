@@ -1,47 +1,30 @@
 <template>
-    <v-card
-    class="mx-auto"
-    max-width="344"
-    outlined
-  >
-    <v-list-item three-line>
-      <v-list-item-content>
-        <div class="text-overline mb-4">
-          OVERLINE
-        </div>
-        <v-list-item-title class="text-h5 mb-1">
-          Headline 5
-        </v-list-item-title>
-        <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
-      </v-list-item-content>
+  <div class="card">
+    <div class="content has-text-centered">
 
-      <v-list-item-avatar
-        tile
-        size="80"
-      >
-            <v-img
-            height="80"
-            :src="image"
-            ></v-img>
-      </v-list-item-avatar>
-    </v-list-item>
+      <span class="icon-text">
+        <p class="title is-4">
+          <span class="icon">
+              <i :class="'mdi mdi-48 ' + icon"></i>
+          </span> {{descr}}
+        </p>
+      </span>
+    </div>
 
-    <v-card-actions>
-      <v-btn
-        outlined
-        rounded
-        text
-      >
-        Button
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+    <footer class="card-footer">
+      <a href="#" class="card-footer-item">Download</a>
+    </footer>
+  </div>
 </template>
 
 <script>
 export default {
     props: {
-      image: {
+      icon: {
+        type: String,
+        required: true
+      },
+      descr: {
         type: String,
         required: true
       },

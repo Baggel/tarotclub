@@ -24,8 +24,12 @@ async function getUserByUsername(username) {
     return  db.any('SELECT * FROM users WHERE username=$1', [username]);
 }
 
-async function getUserByUsernameOrEmail(username, email) {
-    return  db.any('SELECT * FROM users WHERE username=$1 OR email=$2', [username, email]);
+async function getUserByUsernameOrEmail(login) {
+    return  db.any('SELECT * FROM users WHERE username=$1 OR email=$2', [login, login]);
+}
+
+async function getUserByEmail(email) {
+    return  db.any('SELECT * FROM users WHERE email=$1', [email]);
 }
 
 async function updateProfile(firstname, lastname, company, email, tel, level, username) {
@@ -47,7 +51,7 @@ async function deleteUser(username) {
 }
 
 async function setResetToken (id, token) {
-    return db.one('UPDATE users SET reset_token=$1, reset_password_datetime=DATE_ADD(NOW(), INTERVAL 15 MINUTE) WHERE id = $2', [token, id]);
+    return db.none("UPDATE users SET reset_token=$1, reset_password_datetime=(CURRENT_TIMESTAMP + INTERVAL '15 minutes') WHERE id = $2", [token, id]);
 }
 
 async function getUserByResetToken(token) {
@@ -55,7 +59,7 @@ async function getUserByResetToken(token) {
 }
 
 async function setNewPassword(id, hashed_password) {
-    return db.one('UPDATE users SET password=$1, reset_token=$2 WHERE id=$3',
+    return db.none('UPDATE users SET password=$1, reset_token=$2 WHERE id=$3',
                 [hashed_password, '', id]);
 }
 
@@ -86,6 +90,7 @@ module.exports = {
     createUser,
     getUserByUsername,
     getUserByUsernameOrEmail,
+    getUserByEmail,
     updateProfile,
     getUsers,
     deleteUser,

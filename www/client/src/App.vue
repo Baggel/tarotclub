@@ -1,4 +1,7 @@
 <template>
+<div style="height:100vh; width=100vw;">
+
+<section class="section">
 <nav class="navbar is-fixed-top is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="https://www.tarotclub.fr">
@@ -12,37 +15,19 @@
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu" v-bind:class="{'is-active': burger }">
+  <div id="navbarBasicExample2" class="navbar-menu" v-bind:class="{'is-active': burger }">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
+
+<!-- 
+
+<a :href="`/` + item.page" class="w3-bar-item w3-button w3-hide-small" >
+          <i :class="item.icon"></i>
+
+-->
+      <a class="navbar-item" v-for="item in menuItems" :key="item.title">
+        {{ item.text }}
       </a>
 
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
     </div>
 
     <div class="navbar-end">
@@ -59,39 +44,15 @@
     </div>
   </div>
 </nav>
+</section>
 
 <router-view></router-view>
 
+</div>
 </template>
 
 
 <script>
-
-
-/*
-
-<div class="w3-main">
-<div class="w3-bar w3-teal">
-  <a href="#" class="w3-bar-item w3-button">TarotClub</a>
-  <template
-            v-for="item in menuItems" :key="item.title"
-          >
-          <a :href="`/` + item.page" class="w3-bar-item w3-button w3-hide-small" >
-          <i :class="item.icon"></i>
-          {{ item.text }}</a>
-          
-  </template>
-
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
-</div>
-
-<router-view></router-view>
-
-</div>
-
-
- */
-
 
 export default {
   name: 'App',
@@ -107,6 +68,7 @@ export default {
         alertTimeout: 3000,
         drawer: null,
         menuItems: [
+          { text: 'Accueil', icon: 'mdi mdi-cards-playing-outline', page: 'home', user: true },
           { text: 'Jouer en ligne', icon: 'mdi mdi-cards-playing-outline', page: 'game', user: true },
           { text: 'Documentation', icon: 'mdi mdi-file-document', page: 'docs', user: true },
         ],

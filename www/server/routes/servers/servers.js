@@ -1,106 +1,65 @@
-const router = require('express').Router();
-const jwt = require('jsonwebtoken');
-const JwtUtil = require("../jwtutil.js");
-// const WebSocket = require('ws');
 
-let list = new Map();
-let sskList = new Map();
+const jwtUtil = require("../jwtutil.js");
+const WebSocket = require('../websocket.js');
 
-let tarotServers = [];
-
+let list = new Map(); // liste des serveurs: key = token, value = serveur object (ip, stats...)
+let wsClients = new Map(); // key = token, value = web socket client object { id, socket }
 
 /*
-router.get('/events', JwtUtil.checkTokenForServers, (req, res, next) => {
 
-    res.set({
-        'Cache-Control': 'no-cache',
-        'Content-Type': 'text/event-stream',
-        'Connection': 'keep-alive',
-        'X-Accel-Buffering': 'no',
-        "Access-Control-Allow-Origin": '*'
-      });
+{ 
+    "id":1624611819492,
+    "name":"TarotServer",
+    "nb_players":0,
+    "nb_tables":1,
+    "tcp_port":4269,
+    "ws_port":4270
+}
 
-      //=> Flush headers immediately
-    // This has the advantage to 'test' the connection: if the client can't access this resource because of
-    // CORS restrictions, the connection will fail instantly.
-      res.flushHeaders();
-
-    // After client opens connection send all nests as string
-
-    
-
-    // let interValID = setInterval(() => {
-    //     counter++;
-    //     // if (counter >= 10) {
-    //     //     clearInterval(interValID);
-    //     //     res.end(); // terminates SSE session
-    //     //     return;
-    //     // }
-    //     res.write(`data: ${JSON.stringify({num: counter})}\n\n`); // res.write() instead of res.send()
-    // }, 1000);
-    
-    const tarotServerId = Date.now();
-    const timerId = setInterval(() => {
-                // Emit an SSE that contains the current 'count' as a string
-                sendEventsToOneServer("Allow player", { payer: "plop" }, tarotServerId);
-            }, 1000);
-
-    const newClient = {
-      id: tarotServerId,
-      res,
-      timerId: timerId
-    };
-    console.log("[SSE] New connection: " + tarotServerId);
-
-    tarotServers.push(newClient);
-
-    // When client closes connection we update the tarotServers list
-    // avoiding the disconnected one
-    res.on('close', () => {
-       console.log("[SSE] Connection closed: " + tarotServerId);
-       clearInterval(timerId);
-       tarotServers = tarotServers.filter(c => c.id !== tarotServerId);
-      
-    });
-});
 */
-function sendEventsToOneServer(message, data, tarotServerId) {
-    tarotServers.forEach((c) => {
-        if (c.id == tarotServerId) {
-            c.res.write(JSON.stringify({
-                success: true,
-                data: data,
-                message: message
-            }));
+
+// ================================================================================================
+// LINK WITH TCDS TAROTCLUB SERVER EXECUTABLES
+// ================================================================================================
+const wss = new WebSocket();
+
+wss.start("127.0.0.1", 8989, (cmd, client) => {
+
+    // récupérer remote adresse lors du protocol upgrade, pour obtenir l'en-tête http x-forwarded-for
+    // server.ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    try {
+        let json = JSON.parse(cmd);
+
+        if (list.has(json.token)) {
+            updateServerStatus(json.token, json.server);
+        } else {
+            if (registerNewServer(json.token, json.server)) {
+                // Accepté, on associe le client websocket à ce serveur
+                wsClients.set(json.token, client);
+                sendToGameServer(list.get(json.token).id, {
+                    cmd: 'register',
+                    success: true
+                });
+            }
         }
-    });
-}
 
-// Iterate tarotServers list and use write res object method to send new nest
-function sendEventsToAll(message) {
-    tarotServers.forEach(c => c.res.write(JSON.stringify({
-            success: true,
-            data: { },
-            message: message
-        }))
-    );
-}
-
-router.get('/list', (req, res) => {
-
-    res.status(200).json({
-            success: true,
-            data: Array.from(list).map( ([k,v]) => {return v} ),
-            message: 'Servers list'
-    });
+    } catch (error) {
+        console.error(error);
+    }
 });
 
-router.post('/register', (req, res, next) => {
+wss.onConnect = (newClient) => {
+    console.log("Connected client ID: " + newClient.id);
+};
 
+wss.onClose = (client) => {
+    console.log("Closed client ID: " + client.id);
+    wsClients = wsClients.filter(c => c.id !== client.id);
+};
+
+function registerNewServer(token, server) {
     let allowedServer = false;
-    let token = req.body.token;
-    let server = req.body.server;
-  //  sendEventsToAll("coucou");
+    let success = false;
 
     if (token == process.env.TCDS_OFFICIAL_TOKEN1) {
         allowedServer = true;
@@ -111,51 +70,22 @@ router.post('/register', (req, res, next) => {
     }
 
     if (allowedServer) {
-
-        // Create JWT
-        const serverObj = {
-            token: token,
-            name: server.name
-        };
-
         // server object contains only public information, keep token and ssk private!
+        server.id = Date.now();
         list.set(token, server);
-        
+        // console.log("[SERVERS] Added new server: " + JSON.stringify(server));
 
-        let ssk = jwt.sign ({server: serverObj}, process.env.JWT_SERVER_SECRET);
-        console.log("[SERVERS] Added new server");
-        
-        sskList.set(token, ssk);
-
-        res.status(200).json({
-            success: true,
-            data: {
-                ssk: ssk,
-            },
-            message: 'Server registered'
-        });
-
-    } else {
-        res.status(200).json({
-            success: false,
-            data: {},
-            message: 'Cannot register server'
-        });
+        success = true;
     }
-});
+    return success;
+}
 
-router.post('/status', JwtUtil.checkTokenForServers, (req, res, next) => {
+function updateServerStatus(token, server) {
     // Update status
-    let token = req.body.token;
-    let server = req.body.server;
-    server.ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     let allowedServer = false;
 
-    console.log("[TCDS] Received status from server");
-
-  //  sendEventsToAll("coucou");
-
-    if (req.body.token == process.env.TCDS_OFFICIAL_TOKEN1) {
+    // console.log("[TCDS] Received status from server");
+    if (token == process.env.TCDS_OFFICIAL_TOKEN1) {
         allowedServer = true;
     } else {
         // Serveur non officiel
@@ -165,23 +95,135 @@ router.post('/status', JwtUtil.checkTokenForServers, (req, res, next) => {
 
     if (allowedServer) {
         list.set(token, server);
-        res.status(200).json({
+    }
+}
+
+function sendToGameServer(id, messageObj) {
+    let orderSent = false;
+    list.forEach((value, key, map) => {
+        if (value.id == id) {
+            if (wsClients.has(key)) {
+                let c = wsClients.get(key);
+                if (c != undefined) {
+                    wss.webSocketWrite(JSON.stringify(messageObj), c.socket);
+                    orderSent = true;
+                }
+            }
+        }
+    });
+    return orderSent;
+}
+
+// ================================================================================================
+// PUBLIC ACCESS TO LIST OF SERVERS (client web, Qt, console ...)
+// ================================================================================================
+let publicListeners = [];
+
+
+function mapToArray() {
+    return Array.from(list).map(([k, v]) => { return v });
+}
+
+function getServersList(req, reply)
+{
+    reply.code(200).send({
+        success: true,
+        data: mapToArray(),
+        message: 'Servers list'
+    });
+}
+
+function joinServer (req, reply)
+{
+    console.log("[SERVERS] Join request to: " + JSON.stringify(req.body.server));
+
+    // On génère une clé de jeu partagée entre le client et le serveur
+    let gek = jwtUtil.genRandomString(16);
+    let passPhrase = jwtUtil.genRandomString(32);
+    let webId = Date.now();
+    // on génère un id pour ce joueur histoire de tracer sa demande de connexion
+    // Il permet au serveur d'asscocié ce joueur et sa clé GEK
+
+    if (sendToGameServer(req.body.server.id,
+        {
+            cmd: 'join',
+            webId: webId,
+            gek: gek,
+            passPhrase: passPhrase
+        })) {
+        reply.code(200).send({
             success: true,
-            data: {},
-            message: 'Status updated'
+            data: {
+                gek: gek,
+                passPhrase: passPhrase
+            },
+            message: "Join request success"
         });
-
-        // On envoie à tous les clients connectés la liste des serveurs
-        // sendToAllClients(getServerList());
-
     } else {
-        res.status(200).json({
+        reply.code(200).send({
             success: false,
             data: {},
-            message: 'Status update forbidden'
+            message: 'Cannot communicate with game server'
         });
     }
-});
+}
 
 
-module.exports = router;
+function getEvents (req, reply)
+{
+    reply.raw.setHeader('Cache-Control', 'no-cache');
+    reply.raw.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
+    reply.raw.setHeader('Connection', 'keep-alive');
+    reply.raw.setHeader('Transfer-Encoding', 'identity');
+    reply.raw.setHeader('X-Accel-Buffering', 'no');
+    reply.raw.setHeader("Access-Control-Allow-Origin", '*');
+
+    reply.raw.socket.setKeepAlive(true);
+    reply.raw.socket.setNoDelay(true);
+    reply.raw.socket.setTimeout(0);
+
+    //=> Flush headers immediately
+    // This has the advantage to 'test' the connection: if the client can't access this resource because of
+    // CORS restrictions, the connection will fail instantly.
+    reply.raw.flushHeaders();
+
+    // After client opens connection send all nests as string  
+
+    const listenerId = Date.now();
+    const newListener = {
+        id: listenerId,
+        res: reply.raw,
+    };
+    console.log("[SSE] New connection: " + listenerId);
+
+    publicListeners.push(newListener);
+
+    // When client closes connection we update the publicListeners list
+    // avoiding the disconnected one
+    reply.raw.on('close', () => {
+        console.log("[SSE] Connection closed: " + listenerId);
+        publicListeners = publicListeners.filter(c => c.id !== listenerId);
+
+    });
+}
+
+const periodicPublicTimer = setInterval(function () {
+    sendEventsToAll('servers', mapToArray())
+}, 500);
+
+// Iterate publicListeners list and use write res object method to send new nest
+function sendEventsToAll(event, data) {
+    publicListeners.forEach((c) => {
+        let message = "event: " + event + "\ndata: " + JSON.stringify(data) + "\n\n";
+        // console.log("Send event to: " + c.id + "message: " + message);
+        c.res.write(message);
+    });
+}
+
+module.exports = async function (fastify) {
+
+    fastify.get('/list', getServersList);
+    fastify.post('/join', { preHandler: jwtUtil.checkTokenAllUsers }, joinServer);
+    fastify.get('/events', getEvents);
+}
+

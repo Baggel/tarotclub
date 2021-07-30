@@ -16,11 +16,27 @@ const webSocketCloseBuffer = Buffer.from([
 ]);
 
 class WebSocket {
-    constructor(title, author) {
+    constructor() {
         this.clients = [];
     }
 
-    webSocketWrite(data) {
+    get onConnect() {
+        return this._onConnect;
+    }
+
+    set onConnect(c) {
+        this._onConnect = c;
+    }
+
+    get onClose() {
+        return this._onClose;
+    }
+
+    set onClose(c) {
+        this._onClose = c;
+    }
+
+    webSocketWrite(data, socket) {
         /* eslint-disable capitalized-comments */
 
         // Copy the data into a buffer
@@ -45,7 +61,7 @@ class WebSocket {
 
         // Write the data to the data buffer
         data.copy(buffer, 2 + lengthByteCount);
-        this.socket.write(buffer);
+        socket.write(buffer);
     }
 
     webSocketGetMessage(buffer) {
@@ -171,6 +187,9 @@ class WebSocket {
             socket.on("close", () => {
                 console.log('[WS] Closed');
                 this.clients = this.clients.filter(c => c.id !== clientId);
+                if (this._onClose) {
+                    this._onClose(this.client);
+                }
             });
 
             if (request.headers.upgrade.toLowerCase() !== "websocket") {
@@ -195,12 +214,16 @@ class WebSocket {
                 );
                 console.log("[WS] established");
 
-                const newClient = {
+                this.client = {
                     id: clientId,
                     socket: socket
                 };
 
-                this.clients.push(newClient);
+                this.clients.push(this.client);
+
+                if (this._onConnect) {
+                    this._onConnect(this.client);
+                }
 
             } else {
                 socket.end("HTTP/1.1 400 Bad Request");
@@ -223,7 +246,8 @@ class WebSocket {
                     const wsMessage = this.webSocketGetMessage(buffer);
                     if (wsMessage && wsMessage[1]) {
                         if (wsMessage[0]) {
-                            handleCommands(wsMessage[0]);
+                            handleCommands(wsMessage[0], this.client);
+                            return;
                         }
                     } else if (wsMessage === null) {
                         if (this.socket && !socket.isDestroyed) {

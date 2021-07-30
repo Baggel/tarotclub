@@ -5,8 +5,6 @@ import vue from '@vitejs/plugin-vue'
 export default {
   plugins: [vue()],
   server: {
-    port: 6000,
-    strictPort: false, // throw error if port in use
     proxy: {
       '^/api': {
         target: 'https://localhost:5000',
@@ -19,4 +17,5 @@ export default {
       },
     }
   }
+  
 }

@@ -1,59 +1,110 @@
 <template>
-<div class="w3-main wa-center" style="max-width: 50%">
-    <h1>TarotClub, le jeu de Tarot libre !</h1>
-    
-             <p class="lead">TarotClub est un jeu de Tarot libre (licence GPLv3) fonctionnant sur Windows, Linux et Mac OS X. Le but de ce site est de centraliser les informations autour du développement du jeu.</p>
+<div class="container is-max-widescreen">
 
-            <v-img src="img/screenshots/front.png"
-           
-            ></v-img>
+    <section class="section">
+        <h1 class="title">TarotClub, le jeu de Tarot libre !</h1>
+        
+        <p class="lead">TarotClub est un jeu de Tarot libre (licence GPLv3) fonctionnant sur Windows, Linux et Mac OS X. 
+            Le but de ce site est de centraliser les informations autour du développement du jeu.</p>
 
-     <v-row class="pa-20">
-         <v-col>
-         <v-card flat>
-            <v-card-title>
-                Modes de jeu
-            </v-card-title>
-            <v-card-text>
-                <p>Partie rapide ou enchaînement</p>
-                <p>Jeu solo contre l'ordinateur</p>
-                <p>Donnes numérotées</p>
-            </v-card-text>
-         </v-card>
-    </v-col>
-    <v-col>
-         <v-card flat>
-            <v-card-title>
-                Réseau
-            </v-card-title>
-            <v-card-text>
-                <p>Jeu en réseau</p>
-                <p>Réseau local ou distant</p>
-                <p>Serveur intégré</p>
-            </v-card-text>
-         </v-card>
-</v-col>
-<v-col>
-        <v-card flat>
-            <v-card-title>
-                Outils
-            </v-card-title>
-            <v-card-text>
-                <p>Intelligence artificielle en JavaScript, modifiable</p>
-                <p>Éditeur de donne</p>
-                <p>Options de jeu (adversaires, jouerie)</p>
-                <p>Cartes de Tarot au format vectoriel (SVG)</p>
-                <p>>Système de log avancé avec sauvegarde des parties jouées</p>
-            </v-card-text>
-         </v-card>
-</v-col>
-     </v-row>
+        <figure class="image m-4" >
+            <img src="../assets/screenshots/front.png" style="border-radius: 10px;"/>
+        </figure>
 
-    <v-row>
-        <DownloadTile image="img/ubuntu.png"></DownloadTile>
-        <DownloadTile image="img/win.png"></DownloadTile>
-        <DownloadTile image="img/fedora.png"></DownloadTile>
-    </v-row>
+    </section>
+
+    <section class="section">
+
+     <div class="columns is-centered" style="padding: 2rem">
+        <div class="column">
+            <div class="card">
+                <div class="card-image">
+                    <span class="icon">
+                        <i class="mdi mdi-gamepad-square mdi-48px "></i>
+                    </span>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4">Modes de jeu</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <ul>
+                            <li>Partie rapide ou enchaînement</li>
+                            <li>Jeu solo contre l'ordinateur</li>
+                            <li>Donnes numérotées</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="card-image">
+                    <span class="icon">
+                        <i class="mdi mdi-lan mdi-48px "></i>
+                    </span>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4">Réseau</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <ul>
+                            <li>Jeu en réseau</li>
+                            <li>Réseau local ou distant</li>
+                            <li>Serveur intégré</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="card-image">
+                    <span class="icon">
+                        <i class="mdi mdi-tools mdi-48px "></i>
+                    </span>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4">Outils</p>
+                          </div>
+                    </div>
+
+                    <div class="content">
+                        <ul>
+                            <li>Intelligence artificielle en JavaScript, modifiable</li>
+                            <li>Éditeur de donne</li>
+                            <li>Options de jeu (adversaires, jouerie)</li>
+                            <li>Cartes de Tarot au format vectoriel (SVG)</li>
+                            <li>Système de log avancé avec sauvegarde des parties jouées</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+
+     </section>
+
+<section class="section">
+    <div class="columns is-centered" style="padding: 2rem">
+        <div class="column">
+            <DownloadTile icon="mdi-microsoft-windows" descr="Windows 10 - x64"></DownloadTile>
+        </div>
+        <div class="column">
+            <DownloadTile icon="mdi-linux" descr="Linux AppImage"></DownloadTile>
+        </div>
+    </div>
+
+    </section>
 
 </div>
 
