@@ -10,12 +10,12 @@ import TarotClient from './tarot-client.js'
 
 //============================  VIEWS ============================
 import Home from './views/Home.vue';
+import Docs from './views/Docs.vue';
 /*
 import ResetPassword from './views/ResetPassword.vue';
 import Signin from './views/Signin.vue';
 import Signup from './views/Signup.vue';
 import NewPassword from './views/NewPassword.vue';
-import Docs from './views/Docs.vue';
 import GameView from './views/GameView.vue';
 */
 const router = createRouter({
@@ -50,12 +50,12 @@ const router = createRouter({
         path: '/game',
         name: 'game',
         component: GameView
-      },
+      },*/
       {
         path: '/docs',
         name: 'docs',
         component: Docs
-      },*/
+      },
       { 
         path: "/:catchAll(.*)",
         redirect: '/'
@@ -63,7 +63,6 @@ const router = createRouter({
       
     ]
 });
-
 
 
 const app = createApp(App).use(router);

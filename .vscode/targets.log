@@ -7,7 +7,7 @@ make all -f "/home/anthony/git/personnel/tarotclub/src/wasm/Makefile" -C "/home/
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 30 09:31:35 2021
+# Make data base, printed on Sat Jul 31 15:50:02 2021
 
 # Variables
 
@@ -18,7 +18,7 @@ LC_ALL = C
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/anthony/.gtkrc:/home/anthony/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b99ed81b-6693-499c-9c64-6bf67545949c.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e65ff49e-838c-4f4d-8ff2-17bffb2eab4c.sock
 # makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 22)
 VPATH := ../ ../../lib/icl/util ../ ../../lib/icl/json ../ ../../lib/icl/mbedtls/library
 # environment
@@ -90,7 +90,7 @@ PAM_KWALLET5_LOGIN = /run/user/1000/kwallet5.socket
 # environment
 MFLAGS = -pqrRw
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-84tylfusbTBL/agent.1856
+SSH_AUTH_SOCK = /tmp/ssh-RwWdoyx0rt87/agent.1888
 # default
 .SHELLFLAGS := -c
 # environment
@@ -110,7 +110,7 @@ MAKEFILE_LIST := /home/anthony/git/personnel/tarotclub/src/wasm/Makefile build/m
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 3261
+VSCODE_PID = 11373
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -118,7 +118,7 @@ XDG_SESSION_TYPE = x11
 # makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 14)
 MBED_TLS_SRCS := aes.c gcm.c cipher.c chachapoly.c chacha20.c poly1305.c cipher_wrap.c platform_util.c ccm.c blowfish.c arc4.c camellia.c des.c
 # environment
-SESSION_MANAGER = local/anthony-desktop:@/tmp/.ICE-unix/2133,unix/anthony-desktop:/tmp/.ICE-unix/2133
+SESSION_MANAGER = local/anthony-desktop:@/tmp/.ICE-unix/2168,unix/anthony-desktop:/tmp/.ICE-unix/2168
 # automatic
 *F = $(notdir $*)
 # environment
@@ -214,7 +214,7 @@ LDFLAGS = -s LLD_REPORT_UNDEFINED -s RESERVED_FUNCTION_POINTERS=20 -s EXTRA_EXPO
 # makefile (from '/home/anthony/git/personnel/tarotclub/src/wasm/Makefile', line 13)
 ICL_SRCS := Log.cpp Util.cpp JsonValue.cpp JsonReader.cpp
 # environment
-SSH_AGENT_PID = 1974
+SSH_AGENT_PID = 2006
 # environment
 _ = /usr/share/code/code
 # environment
@@ -556,11 +556,11 @@ clean:
 # Not a target:
 ../../lib/icl/mbedtls/library/gcm.c:
 #  Implicit rule search has been done.
- 
 #  Last modified 2021-02-08 15:28:17.454228702
 #  File has been updated.
 #  Successfully updated.
 
+ 
 build/BasicClient.o: ../BasicClient.cpp ../BasicClient.h ../Network.h ../../lib/icl/json/JsonValue.h ../Common.h ../../lib/icl/util/Util.h ../../lib/icl/util/Log.h ../../lib/icl/util/Observer.h ../Identity.h ../Protocol.h ../Users.h ../../lib/icl/util/UniqueId.h ../Engine.h ../Card.h ../Deck.h ../ServerConfig.h ../Score.h ../TournamentConfig.h ../../lib/icl/json/JsonReader.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -833,11 +833,11 @@ build/camellia.o: ../../lib/icl/mbedtls/library/camellia.c
 #  Last modified 2021-02-08 15:28:17.450228422
 #  File has been updated.
 #  Successfully updated.
- 
 
 # Not a target:
 build/cipher_wrap.d:
 #  Implicit rule search has been done.
+ 
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
@@ -1110,13 +1110,13 @@ build/BasicClient.d:
 #  Last modified 2017-06-11 22:02:45.476177585
 #  File has been updated.
 #  Successfully updated.
- 
 
 # files hash-table stats:
 # Load=119/1024=12%, Rehash=0, Collisions=66/717=9%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
+ 
 
 # General ('VPATH' variable) search path:
 # ..:../../lib/icl/util:..:../../lib/icl/json:..:../../lib/icl/mbedtls/library
@@ -1127,7 +1127,7 @@ build/BasicClient.d:
 # strcache performance: lookups = 777 / hit rate = 58%
 # hash-table stats:
 # Load=326/8192=4%, Rehash=0, Collisions=13/777=2%
-# Finished Make data base on Fri Jul 30 09:31:35 2021
+# Finished Make data base on Sat Jul 31 15:50:02 2021
 
 # make: Leaving directory '/home/anthony/git/personnel/tarotclub/src/wasm'
  

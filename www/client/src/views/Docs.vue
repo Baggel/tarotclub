@@ -96,6 +96,9 @@ export default {
     components: {
 
     },
+    created() {
+        
+    },
     data: () => ({
 
     })

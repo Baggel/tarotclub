@@ -97,6 +97,17 @@ export default class {
     }
 
     /**************************************************************** 
+     * API NEWS & HELP DOCS 
+     ****************************************************************/
+    async getNews() {
+        return this.client('GET','/docs/news');
+    }
+
+    async getHelp() {
+        return this.client('GET','/docs/help');
+    }
+
+    /**************************************************************** 
      * API DU PROFIL UTILISATEUR
      ****************************************************************/
      async setMyProfile(user) {

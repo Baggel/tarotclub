@@ -7,9 +7,27 @@
         <p class="lead">TarotClub est un jeu de Tarot libre (licence GPLv3) fonctionnant sur Windows, Linux et Mac OS X. 
             Le but de ce site est de centraliser les informations autour du développement du jeu.</p>
 
-        <figure class="image m-4" >
-            <img src="../assets/screenshots/front.png" style="border-radius: 10px;"/>
-        </figure>
+
+        <div class="columns is-centered" style="padding: 2rem">
+            <div class="column is-6">
+                <figure class="image m-4" >
+                    <img src="../assets/screenshots/front.png" style="border-radius: 10px;"/>
+                </figure>
+            </div>
+            <div class="column is-6">
+                <div class="category">
+                    <h1 class="title is-5">Nouvelles</h1>
+                    <hr />
+                    <ul>
+                        <li v-for="n in news" :key="n.title">
+                            <i class="mdi mdi-chevron-right-circle"></i>&nbsp;&nbsp;&nbsp;{{n.title}}
+                            
+                        </li>
+                    </ul>
+                        <!-- <h3 class="category-more">View All <i class="far fa-arrow-right icon-padding-left"></i></h3> -->
+                </div>
+            </div>
+        </div>
 
     </section>
 
@@ -94,16 +112,15 @@
 
      </section>
 
-<section class="section">
-    <div class="columns is-centered" style="padding: 2rem">
-        <div class="column">
-            <DownloadTile icon="mdi-microsoft-windows" descr="Windows 10 - x64"></DownloadTile>
+    <section class="section">
+        <div class="columns is-centered" style="padding: 2rem">
+            <div class="column">
+                <DownloadTile icon="mdi-microsoft-windows" descr="Windows 10 - x64"></DownloadTile>
+            </div>
+            <div class="column">
+                <DownloadTile icon="mdi-linux" descr="Linux AppImage"></DownloadTile>
+            </div>
         </div>
-        <div class="column">
-            <DownloadTile icon="mdi-linux" descr="Linux AppImage"></DownloadTile>
-        </div>
-    </div>
-
     </section>
 
 </div>
@@ -116,13 +133,20 @@ import DownloadTile from "../components/DownloadTile.vue";
 
 export default {
     data: () => ({
-
+        news: []
     }),
     components: { DownloadTile },
     //====================================================================================================================
     methods: {
 
 
+    },
+    created() {
+        this.$api.getNews().then( result => {
+            if (result.success) {
+                this.news = result.data;
+            }
+        });
     },
     //====================================================================================================================
     beforeDestroy() {

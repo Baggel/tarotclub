@@ -26,6 +26,7 @@ const ApiRoot           = '/api/v1';
 fastify.register(require('./routes/dashboard/user.js'), { prefix: ApiRoot + '/dashboard/user' });
 fastify.register(require('./routes/auth/auth.js'), { prefix: ApiRoot + '/auth' });
 fastify.register(require('./routes/servers/servers.js'), { prefix: ApiRoot + '/servers' });
+fastify.register(require('./routes/docs/docs.js'), { prefix: ApiRoot + '/docs' });
 
 // ============================================================================
 // START APPLICATION
