@@ -2,12 +2,12 @@ import { reactive, readonly } from 'vue'
 
 
 const state = reactive({
-        connection: 0,
-        list: [
-        ],
-        currentServer: null,
-        isinitialized: false,
-        isIngame: true,
+    connection: 0,
+    list: [
+    ],
+    currentServer: null,
+    isinitialized: false,
+    isIngame: true,
 });
 
 

@@ -15,18 +15,17 @@
     </a>
   </div>
 
-  <div id="navbarBasicExample2" class="navbar-menu" v-bind:class="{'is-active': burger }">
+  <div id="mainNavbar" class="navbar-menu" v-bind:class="{'is-active': burger }">
     <div class="navbar-start">
 
-<!-- 
-
-<a :href="`/` + item.page" class="w3-bar-item w3-button w3-hide-small" >
-          <i :class="item.icon"></i>
-
--->
-      <a class="navbar-item" v-for="item in menuItems" :key="item.title">
-        {{ item.text }}
-      </a>
+      <router-link class="navbar-item is-expanded" v-for="item in menuItems" :key="item.title" :to="{name: item.page}">
+        <span class="icon-text">
+          <span class="icon">
+            <i :class="'mdi ' + item.icon "></i>
+          </span>
+          <span>{{ item.text }}</span>
+        </span>
+      </router-link>
 
     </div>
 
@@ -69,7 +68,7 @@ export default {
         drawer: null,
         menuItems: [
           { text: 'Accueil', icon: 'mdi mdi-cards-playing-outline', page: 'home', user: true },
-          { text: 'Jouer en ligne', icon: 'mdi mdi-cards-playing-outline', page: 'game', user: true },
+          // { text: 'Jouer en ligne', icon: 'mdi mdi-cards-playing-outline', page: 'game', user: true },
           { text: 'Documentation', icon: 'mdi mdi-file-document', page: 'docs', user: true },
         ],
         evtSource: null
