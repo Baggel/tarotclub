@@ -4,6 +4,14 @@
     <h1 class="title has-text-centered">Créer un compte</h1>
 
     <form ref="signupForm">
+
+        <div class="field">
+            <div class="control">
+                <input class="input is-medium" type="text" v-bind:class="{'is-danger': isUsernameError }" v-model="username" :placeholder="$t('message.username')">
+            </div>
+            <p class="help is-danger">{{usernameError}}</p>
+        </div>
+
         <div class="field">
             <div class="control">
                 <input class="input is-medium" type="email" v-bind:class="{'is-danger': isEmailError }" v-model="email" :placeholder="$t('message.email')">
@@ -49,6 +57,8 @@ export default {
         passwordError: '',
         email: '',
         emailError: '',
+        username: '',
+        usernameError: '',
         potmiel: '',
         strength: 0,
     }),
@@ -62,6 +72,11 @@ export default {
         isEmailError() {
             let err = !emailIsValid(this.email);
             this.emailError = err ? this.$t('message.emailError') : '';
+            return err;
+        },
+        isUsernameError() {
+            let err = !/^[a-zA-Z0-9_]{4,40}$/.test(this.username);
+            this.usernameError = err ? this.$t('message.usernameError') : '';
             return err;
         },
         strengthColor() {
