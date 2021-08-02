@@ -83,7 +83,7 @@
     methods: {
 
       generate () {
-        this.$emit('export-started')
+        this.emit('export-started')
         const dataExport = this.data;
 
         if (!dataExport) {
@@ -102,7 +102,7 @@
         if(this.encoding === "utf-8") {
             csv = "\ufeff" + csv
         }
-        this.$emit('export-finished')
+        this.emit('export-finished')
         if (!this.testing) {
           let blob = new Blob([csv], {type: "application/csv;charset=" + this.encoding})
           saveAs(blob, this.name)

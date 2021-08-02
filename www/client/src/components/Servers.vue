@@ -87,7 +87,7 @@
 
         }).catch( (e) => {
             console.error("[SERVERS] Failure to join server");
-            this.$eventHub.$emit('setAlert', 'Erreur: impossible de joindre le serveur', 'error', 3000);
+            this.$eventHub.emit('setAlert', 'Erreur: impossible de joindre le serveur', 'error', 3000);
 
         });
       },
@@ -101,7 +101,7 @@
             //  this.servers = result.data;
             this.$store.commit('server/SET_SERVERS', result.data);
           } else {
-              this.$eventHub.$emit('setAlert', 'Impossible de récupérer la liste des serveurs', 'error', 3000);
+              this.$eventHub.emit('setAlert', 'Impossible de récupérer la liste des serveurs', 'error', 3000);
           }
 
       }).catch(error => {

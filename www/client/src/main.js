@@ -88,6 +88,7 @@ const messages = {
       average: 'Average',
       good: 'Good',
       strong: 'Strong',
+      badForm: 'The form still contains errors',
     }
   },
   fr: {
@@ -103,6 +104,7 @@ const messages = {
       average: 'Moyen',
       good: 'Bon',
       strong: 'Fort',
+      badForm: 'Le formulaire contient des erreurs',
     }
   }
 }

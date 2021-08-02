@@ -80,9 +80,9 @@ export default {
                 } else {
 
                     if (result.reason === 'deleted') {
-                        this.$eventHub.$emit('setAlert', "Compte supprimé", 'error', 3000);
+                        this.$eventHub.emit('setAlert', "Compte supprimé", 'error', 3000);
                     } else {
-                        this.$eventHub.$emit('setAlert', "Erreur de login ou de mot de passe", 'error', 3000);
+                        this.$eventHub.emit('setAlert', "Erreur de login ou de mot de passe", 'error', 3000);
                     }
                 }
 

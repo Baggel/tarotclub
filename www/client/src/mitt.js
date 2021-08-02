@@ -53,13 +53,13 @@
          * @param {Any} [evt] Any value (object is recommended and powerful), passed to each handler
          * @memberOf mitt
          */
-        emit(type, evt) {
+        emit(type, ...args) {
             let handlers = all.get(type);
             if (handlers) {
                 handlers
                     .slice()
                     .map((handler) => {
-                    handler(evt);
+                    handler(...args);
                 });
             }
             handlers = all.get('*');
@@ -67,7 +67,7 @@
                 handlers
                     .slice()
                     .map((handler) => {
-                    handler(type, evt);
+                    handler(type, ...args);
                 });
             }
         }

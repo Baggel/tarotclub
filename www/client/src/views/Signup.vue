@@ -1,7 +1,9 @@
 <template>
 <div class="container " style="max-width: 400px;">
     <div class="card p-4">
-    <form>
+    <h1 class="title has-text-centered">Créer un compte</h1>
+
+    <form ref="signupForm">
         <div class="field">
             <div class="control">
                 <input class="input is-medium" type="email" v-bind:class="{'is-danger': isEmailError }" v-model="email" :placeholder="$t('message.email')">
@@ -86,6 +88,13 @@ export default {
                 return this.$t('message.strong');
             }
         },
+        isValid() {
+            if (this.isPasswordError || this.isEmailError) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     created() {
         if (this.$store.state.loggedIn) {
@@ -123,7 +132,7 @@ export default {
             this.strength = score * 20; //[0..100]
         },
         returnToHome() {
-            this.$eventHub.$emit('setAlert', 'Vous êtes déjà connecté!', 'error', 3000);
+            this.$eventHub.emit('setAlert', 'Vous êtes déjà connecté!', 'error', 3000);
             this.$router.push({ name: 'home' });
         },
 
@@ -131,20 +140,24 @@ export default {
             this.$refs.signupForm.reset();
         },
         validate (e) {
-            this.$api.signup( {password: this.password, username: this.username, email: this.email, potmiel: this.potmiel }).then( result => {
-                if (result.success) {
-                    this.$eventHub.$emit('setAlert', 'Compte créé, en attente de validation', 'success', 3000);
-                } else {
-                    this.$eventHub.$emit('setAlert', 'Erreur lors de la création du compte: ' + result.message, 'error', 3000);
-                }
+            if (this.isValid) {
+                this.$api.signup( {password: this.password, username: this.username, email: this.email, potmiel: this.potmiel }).then( result => {
+                    if (result.success) {
+                        this.$eventHub.emit('setAlert', 'Compte créé, en attente de validation', 'success', 3000);
+                    } else {
+                        this.$eventHub.emit('setAlert', 'Erreur lors de la création du compte: ' + result.message, 'error', 3000);
+                    }
 
-                nextTick(() => {
-                    this.reset();
+                    nextTick(() => {
+                        this.reset();
+                    });
+
+                }).catch(error => {
+                    console.error(error);
                 });
-
-            }).catch(error => {
-                console.error(error);
-            });
+            } else {
+                this.$eventHub.emit('setAlert', this.$t('message.badForm'), 'error', 3000);
+            }
 
             e.preventDefault();
         }

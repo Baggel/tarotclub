@@ -221,10 +221,10 @@
             this.$api.deleteUser( {username: item.username }).then((response) => {
 
               if (response.success) {
-                this.$eventHub.$emit('setAlert', 'Utilisateur supprimé avec succès', 'success', 3000);
+                this.$eventHub.emit('setAlert', 'Utilisateur supprimé avec succès', 'success', 3000);
                 this.initialize();
               } else {
-                this.$eventHub.$emit('setAlert', 'Impossible de supprimer cet utilisateur', 'error', 3000);
+                this.$eventHub.emit('setAlert', 'Impossible de supprimer cet utilisateur', 'error', 3000);
               }
             });
         } 
@@ -243,11 +243,11 @@
         if (this.editedIndex > -1) {
           this.$api.setUserProfile(this.editedItem).then((response) => {
               if (response.success) {
-                this.$eventHub.$emit('setAlert', 'Utilisateur édité avec succès', 'success', 3000);
+                this.$eventHub.emit('setAlert', 'Utilisateur édité avec succès', 'success', 3000);
                 this.initialize();
                 this.close();
               } else {
-                this.$eventHub.$emit('setAlert', 'Impossible de modifier cet utilisateur, vérifez les champs', 'error', 3000);
+                this.$eventHub.emit('setAlert', 'Impossible de modifier cet utilisateur, vérifez les champs', 'error', 3000);
               }
           });
           //Object.assign(this.users[this.editedIndex], this.editedItem)

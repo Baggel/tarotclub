@@ -109,12 +109,12 @@ export default {
                         if (response.success) {
                             this.$store.commit('user/LOGIN_SUCCESS', response.data.profile);
                             this.initialize();
-                            this.$eventHub.$emit('setAlert', 'Vos informations ont bien été enregistrées', 'success', 3000);
+                            this.$eventHub.emit('setAlert', 'Vos informations ont bien été enregistrées', 'success', 3000);
                         }
                     });
                     
                 } else {
-                    this.$eventHub.$emit('setAlert', 'Erreur lors de la sauvegarde de vos paramètres', 'error', 3000);
+                    this.$eventHub.emit('setAlert', 'Erreur lors de la sauvegarde de vos paramètres', 'error', 3000);
                 }
 
             }).catch(error => {

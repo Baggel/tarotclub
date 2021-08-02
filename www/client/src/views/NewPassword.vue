@@ -80,9 +80,9 @@ export default {
             if (this.checkbox && this.email === '') {
                 this.$api.setNewPassword( {password: this.password, token: this.token, honeypot: this.email, human: this.checkbox }).then( result => {
                     if (result.success) {
-                        this.$eventHub.$emit('setAlert', 'Votre mot de passe a été modifié avec succès', 'success', 3000);
+                        this.$eventHub.emit('setAlert', 'Votre mot de passe a été modifié avec succès', 'success', 3000);
                     } else {
-                        this.$eventHub.$emit('setAlert', 'Impossible de modifier votre mot de passe', 'error', 3000);
+                        this.$eventHub.emit('setAlert', 'Impossible de modifier votre mot de passe', 'error', 3000);
                     }
 
                     this.reset();

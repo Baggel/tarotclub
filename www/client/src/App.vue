@@ -54,6 +54,9 @@
 
 <script>
 
+// Import the toast function
+import Toast from './toast.js';
+
 export default {
   name: 'App',
   components: {
@@ -119,7 +122,22 @@ export default {
         this.alertType = type;
         this.alertTimeout = timeout;
         this.alertEnable = true;
-    });
+
+      console.log('TYPE ' + typeof(timeout))
+      Toast({
+          text: text,
+          duration: timeout,
+          newWindow: true,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          style: {
+            background: type == 'error' ? 'hsl(348, 86%, 61%)' : type == 'success' ? 'hsl(153, 53%, 53%)' : 'hsl(229, 53%, 53%)'
+          },
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          onClick: function(){} // Callback after click
+        }).showToast();
+      });
 
   },
   //====================================================================================================================
@@ -141,6 +159,7 @@ export default {
     this.evtSource.onopen = function() {
       console.log("EventSource open");
     }
+
   }
   
 };
