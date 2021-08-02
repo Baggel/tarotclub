@@ -1,103 +1,127 @@
 <template>
+<div class="container " style="max-width: 400px;">
+    <div class="card p-4">
+    <form>
+        <div class="field">
+            <div class="control">
+                <input class="input is-medium" type="email" v-bind:class="{'is-danger': isEmailError }" v-model="email" :placeholder="$t('message.email')">
+            </div>
+            <p class="help is-danger">{{emailError}}</p>
+        </div>
 
-    <!-- SIGN UP -->
+        <div class="field">
+            <div class="control">
+                <input class="input is-medium" type="password" autocomplete="on" v-bind:class="{'is-danger': isPasswordError }" v-model="password" :placeholder="$t('message.password')">
+            </div>
+            <p class="help is-danger">{{passwordError}}</p>
+            <progress :class="'progress mt-4 ' +  strengthColor" :value="strength" max="100" style="background-color: orange;">{{strength}}%</progress>
+            <p>{{strengthLevel}}</p>
+        </div>
 
-    <v-card width="400px" class="mx-auto" style="text-align:center; margin-top:100px; margin-bottom:50px">
-        <v-col cols="12">
+        <div class="field">
+            <div class="control">
+                <input type="text" v-model="potmiel" autocomplete="off" style="display:none !important; visibility:hidden !important;">
+            </div>
+        </div>
 
-            <v-card class="mx-auto" width="360px" elevation="0">
-
-                <h1 style="padding-bottom:10px">Créer un compte</h1>
-
-                <!-- SIGN UP FORM -->
-
-                <v-card elevation="0" class="mx-auto" width="300px">
-                    <v-form ref="signupForm" style="padding-bottom:30px;" v-model="valid">
-      
-                        <v-text-field
-                            name="username"
-                            value=""
-                            type="text" 
-                            label="User name"
-                            :rules="nameRules"
-                            v-model="username"
-                            required
-                        ></v-text-field>
-
-                        <v-text-field
-                            name="password"
-                            type="password" 
-                            label="Password"
-                            v-model="password"
-                            required
-                        ></v-text-field>
-
-                        <v-text-field
-                            name="email"
-                            type="email" 
-                            label="email"
-                            :rules="emailRules"
-                            v-model="email"
-                            required
-                            style="padding-bottom:20px;"
-                        ></v-text-field>
-
-                        <v-text-field
-                            name="potmiel"
-                            type="text" 
-                            label="potmiel"
-                            v-model="potmiel"
-                            autocomplete="off"
-                            style="display:none !important; visibility:hidden !important;"
-                        ></v-text-field>
-
-                        <v-btn type="submit" class="mr-4" :disabled="!valid"  @click="validate">Valider</v-btn>
-                        <v-btn @click="reset">Effacer</v-btn>
-                    </v-form>
-                    
-                    <router-link :to="{name: 'signin'}"><p style="display:inline;">Revenir à l'identification.</p></router-link>
-                    
-                </v-card>
-            </v-card>
-        </v-col>
-    </v-card>
+        <button class="button is-block is-primary is-fullwidth is-medium" @click="validate">{{$t('message.submit')}}</button>
+        <br />
+        <router-link :to="{name: 'signin'}"><p>Revenir à l'identification.</p></router-link>
+        </form>
+    </div>
+</div>
 </template>
 
 <script>
+
+function emailIsValid (email) {
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+}
+
 import { nextTick } from 'vue'
 
 export default {
     
-    data: () => ({
-        valid: false,
+    data: () => ({       
         password: '',
-        username: '',
+        passwordError: '',
         email: '',
+        emailError: '',
         potmiel: '',
-        nameRules: [
-            v => !!v || 'Name is required',
-            v => v == undefined || v.length <= 20 || 'Name must be less than 20 characters',
-        ],
-        emailRules: [
-            v => !!v || 'E-mail is required',
-            v => /.+@.+/.test(v) || 'E-mail must be valid',
-        ],
+        strength: 0,
     }),
+    computed: {
+        isPasswordError() {
+            let err = this.password == undefined || this.password.length == 0;
+            this.passwordError = err ? this.$t('message.passwordError') : '';
+            this.computePasswordStrength(this.password);
+            return err;
+        },
+        isEmailError() {
+            let err = !emailIsValid(this.email);
+            this.emailError = err ? this.$t('message.emailError') : '';
+            return err;
+        },
+        strengthColor() {
+
+            if (this.strength < 50) {
+                return 'is-danger';
+            } else if ((this.strength >= 50) && (this.strength < 70)) {
+                return 'is-warning';
+            } else if ((this.strength >= 70) && (this.strength < 100)) {
+                return 'is-info';
+            } else {
+                return 'is-success';
+            }            
+        },
+        strengthLevel() {
+
+            if (this.strength < 50) {
+                return this.$t('message.bad');
+            } else if ((this.strength >= 50) && (this.strength < 70)) {
+                return this.$t('message.average');
+            } else if ((this.strength >= 70) && (this.strength < 100)) {
+                return this.$t('message.good');
+            } else {
+                return this.$t('message.strong');
+            }
+        },
+    },
     created() {
-        if (this.$store.state.user.loggedIn) {
+        if (this.$store.state.loggedIn) {
           this.returnToHome();
         }
     },
     beforeRouteUpdate (to, from, next) {
 
-        if (this.$store.state.user.loggedIn) {
+        if (this.$store.state.loggedIn) {
           this.returnToHome();
         } else {
             next();
         }
     },
     methods: {
+        computePasswordStrength(password) {
+            let score = 0;
+            if (password.match(/[a-z]+/)) {
+                score += 1;
+            }
+            if (password.match(/[A-Z]+/)) {
+                score += 1;
+            }
+            if (password.match(/[0-9]+/)) {
+                score += 1;
+            }
+            if (password.match(/[^a-zA-Z\d\s:]+/)) {
+                score += 1;
+            }
 
+            if (password.length > 25) {
+                score += 1;
+            }
+
+            this.strength = score * 20; //[0..100]
+        },
         returnToHome() {
             this.$eventHub.$emit('setAlert', 'Vous êtes déjà connecté!', 'error', 3000);
             this.$router.push({ name: 'home' });

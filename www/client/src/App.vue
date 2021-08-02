@@ -20,8 +20,8 @@
 
       <router-link class="navbar-item is-expanded" v-for="item in menuItems" :key="item.title" :to="{name: item.page}">
         <span class="icon-text">
-          <span class="icon">
-            <i :class="'mdi ' + item.icon "></i>
+          <span class="icon ">
+            <i :class="'mdi mdi-24px ' + item.icon "></i>
           </span>
           <span>{{ item.text }}</span>
         </span>
@@ -32,9 +32,10 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
+
+          <router-link class="button is-primary" :to="{name: 'signup'}">
+              <strong>Sign up</strong>
+          </router-link>
           <a class="button is-light">
             Log in
           </a>
@@ -67,7 +68,7 @@ export default {
         alertTimeout: 3000,
         drawer: null,
         menuItems: [
-          { text: 'Accueil', icon: 'mdi mdi-cards-playing-outline', page: 'home', user: true },
+          { text: 'Accueil', icon: 'mdi mdi-home', page: 'home', user: true },
           // { text: 'Jouer en ligne', icon: 'mdi mdi-cards-playing-outline', page: 'game', user: true },
           { text: 'Documentation', icon: 'mdi mdi-file-document', page: 'docs', user: true },
         ],

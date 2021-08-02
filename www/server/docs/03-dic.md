@@ -1,11 +1,4 @@
-<div class="container">    
-    <div class="row">
-        <div class="col-md-3">
-
-           {{> doc_topics}}
-	
-        <div class="col-md-9">
-			<h1>Glossaire et traductions</h1>
+# Glossaire et traductions</h1>
 			<hr>
             <article>
 	  
@@ -149,9 +142,3 @@
 		</tbody>
 		</table>
 	</div>
-
-                </article>
-            </div>
-        </div>
-    </div>
-</div> <!-- Container -->
