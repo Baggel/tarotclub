@@ -5,10 +5,10 @@ import { createI18n } from 'vue-i18n/index';
 
 // APPLICATION
 import App from './App.vue'
-import Api from './Api.js'
-
+import Api from './api.js'
+import mitt from './mitt.js';
+import store from './store.js';
 import TarotClient from './tarot-client.js'
-
 
 // =====================================================================================
 // VIEWS
@@ -19,6 +19,7 @@ import ResetPassword from './views/ResetPassword.vue';
 import Signin from './views/Signin.vue';
 import Signup from './views/Signup.vue';
 import NewPassword from './views/NewPassword.vue';
+import Dashboard from './views/Dashboard.vue';
 // import GameView from './views/GameView.vue';
 
 
@@ -32,6 +33,11 @@ const router = createRouter({
         path: '/',
         name: 'home',
         component: Home
+      },
+      {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: Dashboard
       },
       {
         path: '/signin',
@@ -89,6 +95,9 @@ const messages = {
       good: 'Good',
       strong: 'Strong',
       badForm: 'The form still contains errors',
+      userOrMail: "Username or e-mail",
+      signup: 'Sign up',
+      signin: 'Log in'
     }
   },
   fr: {
@@ -105,6 +114,9 @@ const messages = {
       good: 'Bon',
       strong: 'Fort',
       badForm: 'Le formulaire contient des erreurs',
+      userOrMail: "Nom utilisateur ou e-mail",
+      signup: "S'inscrire",
+      signin: 'Connexion'
     }
   }
 }
@@ -122,9 +134,6 @@ const i18n = createI18n({
 // VUE INSTANCE AND GLOBAL OBJECTS
 // =====================================================================================
 const app = createApp(App).use(router).use(i18n);
-
-import mitt from './mitt.js';
-import store from './Store.js';
 
 const eventHub = mitt();
 const api = new Api();

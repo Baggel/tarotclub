@@ -31,14 +31,33 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
+        <div class="buttons" v-if="isLogged">
+
+              <router-link class="button" :to="{name: 'dashboard'}">
+                  <span class="icon">
+                    <i class="mdi mdi-account-circle mdi-24px"></i>
+                  </span>
+              </router-link>     
+
+              <button class="button" @click="logOut">
+                <span class="icon">
+                  <i class="mdi mdi-logout mdi-24px"></i>
+                </span>
+              </button>
+
+        </div>
+
+
+        <div class="buttons" v-else>
 
           <router-link class="button is-primary" :to="{name: 'signup'}">
-              <strong>Sign up</strong>
+              <strong>{{$t("message.signup")}}</strong>
           </router-link>
-          <a class="button is-light">
-            Log in
-          </a>
+
+           <router-link class="button is-light" :to="{name: 'signin'}">
+              <strong>{{$t("message.signin")}}</strong>
+          </router-link>
+
         </div>
       </div>
     </div>
@@ -65,11 +84,6 @@ export default {
   data () {
       return {
         burger: false,
-        alertType: 'error', // success, info, warning or error
-        alertText: '',
-        alertEnable: false,
-        alertTimeout: 3000,
-        drawer: null,
         menuItems: [
           { text: 'Accueil', icon: 'mdi mdi-home', page: 'home', user: true },
           // { text: 'Jouer en ligne', icon: 'mdi mdi-cards-playing-outline', page: 'game', user: true },
@@ -80,20 +94,21 @@ export default {
     },
   computed: {
     isLogged() {
-      return this.$store.getters["user/isLogged"];
+      return this.$store.state.loggedIn;
     },
     isInitialized() {
       // Or whatever criteria you decide on to represent that the
       // app state has finished loading.
-      return this.$store.state.isinitialized;
+      return this.$store.state.isInitialized;
     },
   },
 
   methods: {
     logOut() {
-      // this.$store.commit("user/LOGOUT");
+      console.log('[APP] Logout')
+      this.$store.setLogout();
       this.$api.destroyToken();
-      this.$router.push({ name: "signin" });
+      this.$router.push({ name: "home" });
     }
   },
     //====================================================================================================================
@@ -102,28 +117,21 @@ export default {
     this.$api.getMyProfile().then((response) => {
 
         if (response.success) {
-          // this.$store.commit('user/LOGIN_SUCCESS', response.data.profile);
+            this.$store.setLoginSuccess(response.data.profile);
         } else {
           console.log("Not logged in.");
-          // this.$store.commit('user/LOGIN_FAILURE');
-          // this.$store.commit('SET_INITIALIZED', true);
+          this.$store.setLogout();
         }
+        this.$store.setInitialized(true);
     }).catch((error) => {
-      console.log(error);
-      console.log("Not logged in.");
-      // this.$store.commit('user/LOGIN_FAILURE');
-      // this.$store.commit('SET_INITIALIZED', true);
+      console.log("Error getting profile: " + error);
+      this.$store.setLogout();
+      this.$store.setInitialized(true);
     });
   },
   //====================================================================================================================
   created() {
      this.$eventHub.on('setAlert', (text, type, timeout) => {
-        this.alertText = text;
-        this.alertType = type;
-        this.alertTimeout = timeout;
-        this.alertEnable = true;
-
-      console.log('TYPE ' + typeof(timeout))
       Toast({
           text: text,
           duration: timeout,
@@ -153,7 +161,7 @@ export default {
     }
 
     this.evtSource.addEventListener('servers', (event) => {
-      // this.$store.commit('server/SET_SERVERS', JSON.parse(event.data));
+        this.$store.setServers(JSON.parse(event.data));
     });
 
     this.evtSource.onopen = function() {

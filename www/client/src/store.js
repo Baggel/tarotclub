@@ -6,8 +6,14 @@ const state = reactive({
     list: [
     ],
     currentServer: null,
-    isinitialized: false,
+    isInitialized: false,
+
+    // User state
     isIngame: true,
+    loggedIn: false,
+
+    // User info
+    profile: {}
 });
 
 
@@ -15,7 +21,27 @@ const setServers = function(list) {
     state.list = list;
 }
 
-export default { state: readonly(state), setServers };
+const setLoginSuccess = function(profile) {
+  state.loggedIn = true;
+  state.profile = profile;
+}
+
+const setLogout = function() {
+  state.loggedIn = false;
+  state.profile = {};
+}
+
+const setInitialized = function() {
+  state.isInitialized = true;
+}
+
+export default { 
+  state: readonly(state), 
+  setServers,
+  setLoginSuccess,
+  setLogout,
+  setInitialized
+};
 
 
 /*

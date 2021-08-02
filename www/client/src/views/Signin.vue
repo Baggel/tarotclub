@@ -1,46 +1,38 @@
 <template>
     <!-- SIGN IN -->
 
-    <v-card width="400px" class="mx-auto" style="text-align:center; margin-top:50px; margin-bottom:50px">
-        <v-col cols="12">
-            <v-card class="mx-auto" width="360px" elevation="0">
-                <h1 style="padding-bottom:10px">Identification</h1>
-                <!-- SIGN IN FORM -->
-                
-                <v-card elevation="0" class="mx-auto" width="300px" style="padding-bottom:10px;">
-                    <form ref="loginForm" style="padding-bottom:50px;" @submit="checkForm">
-                        <v-text-field
-                            name="login"
-                            value=""
-                            type="text" 
-                            label="Utilisateur ou e-mail"
-                            v-model="login"
-                            required
-                        ></v-text-field>
+<div class="container " style="max-width: 400px;">
+    <div class="card p-4">
+    <h1 class="title has-text-centered">Identification</h1>
 
-                        <v-text-field
-                            name="password"
-                            style="padding-bottom:20px"
-                            type="password"
-                            label="Mot de passe"
-                            v-model="password"
-                            required
-                        ></v-text-field>
+    <form ref="loginForm">
 
-                        <v-btn class="mr-4" type="submit">Valider</v-btn>
-                        <v-btn @click="reset">Effacer</v-btn>
-                    </form>
+        <div class="field">
+            <div class="control">
+                <input class="input is-medium" type="text" autocomplete="on"  v-model="login" :placeholder="$t('message.userOrMail')">
+            </div>
+        </div>
 
-                    <p style="display:inline;">Mot de passe oublié ? </p><router-link to="/resetpass"><p style="display:inline;">Réinitialisation.</p></router-link>
-                    <br />
-                    <p style="display:inline;">Pas de compte ? </p><router-link :to="{ name: 'signup'}"><p style="display:inline;">Créer un compte.</p></router-link>
-                </v-card>
-            </v-card>
-        </v-col>
-    </v-card>
+        <div class="field">
+            <div class="control">
+                <input class="input is-medium" type="password" autocomplete="on" v-model="password" :placeholder="$t('message.password')">
+            </div>
+        </div>
+
+        <button class="button is-block is-primary is-fullwidth is-medium" @click="validate">{{$t('message.submit')}}</button>
+        <button class="button is-block is-fullwidth is-medium" @click="reset">Effacer</button>
+        <br />
+        <p style="display:inline;">Mot de passe oublié ? </p><router-link to="/resetpass"><p style="display:inline;">Réinitialisation.</p></router-link>
+        <br />
+        <p style="display:inline;">Pas de compte ? </p><router-link :to="{ name: 'signup'}"><p style="display:inline;">Créer un compte.</p></router-link>
+
+        </form>
+    </div>
+</div>
 </template>
 
 <script>
+
 
 export default {
     data: () => ({
@@ -48,13 +40,13 @@ export default {
         password: ''
     }),
     created() {
-        if (this.$store.state.user.loggedIn) {
+        if (this.$store.state.loggedIn) {
           this.returnToHome();
         }
     },
     beforeRouteUpdate (to, from, next) {
 
-        if (this.$store.state.user.loggedIn) {
+        if (this.$store.state.loggedIn) {
           this.returnToHome();
         } else {
             next();
@@ -70,15 +62,13 @@ export default {
             this.login = '';
             this.$refs.loginForm.reset();
         },
-        checkForm (e) {
+        validate (e) {
             this.$api.signin( {login: this.login, password: this.password }).then( result => {
                 if (result.success) {
                     this.$api.setToken(result.data.token);
-                    this.$store.commit('user/LOGIN_SUCCESS', result.data.profile);
+                    this.$store.setLoginSuccess(result.data.profile);
                     this.$router.push({ name: 'home' });
-     
                 } else {
-
                     if (result.reason === 'deleted') {
                         this.$eventHub.emit('setAlert', "Compte supprimé", 'error', 3000);
                     } else {
