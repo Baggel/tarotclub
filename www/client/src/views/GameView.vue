@@ -1,8 +1,24 @@
 <template>
   <div class="gameview-container">
-    <div class="board-area"></div>
+    <div class="board-area">
 
-      <Board></Board>
+           <div style="width: 100%; height: 100%; display: flex;align-items: center; justify-content: center;" v-if="!isReady">
+              <div class="loader" style="max-width: 50%;" />
+
+          </div>
+
+        <div style="width: 100%; height: 100%; display: flex;align-items: start; justify-content: center;"  v-else-if="!isIngame">
+            <Servers></Servers>
+        </div>
+
+        <Board v-else></Board>
+
+
+
+    </div>
+
+
+     
 
     <div class="lobby-area">
      <Lobby></Lobby>
@@ -85,23 +101,25 @@ export default {
       },
     ],
     view: { w: 0, h: 0 },
-    instance: null
+    instance: null,
+    isReady: false,
   }),
   components: { Servers, Lobby, Board },
   computed: {
     isIngame() {
       return this.$store.state.isIngame;
     },
-    isReady() {
-      return this.$tc.isReady;
-    },
+    // isReady() {
+    //   return this.$tc.isReady;
+    // },
   },
   created() {
-      this.instance = Module({
-            onRuntimeInitialized() {
-              console.log("[GAMEVIEW] Started");
+      this.instance = Module();
+      
+      this.instance.then(() => {
+        console.log("[GAMEVIEW] Started");
              // this.result = instance._Add(1,2);
-            }
+              this.isReady = true;
       });
 
       this.$eventHub.on('log', (text) => {

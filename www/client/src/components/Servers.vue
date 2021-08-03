@@ -1,45 +1,32 @@
 
 <template>
-<div>
-
-   <v-card v-show="connection == 0">
-    <v-card-title>
-      Liste des serveurs
-      <v-spacer></v-spacer>
-      <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Search"
-        single-line
-        hide-details
-      ></v-text-field>
-    </v-card-title>
-    <v-data-table
-      :loading="servers.length == 0"
-      :headers="headers"
-      :items="servers"
-      :search="search"
-    >
-    
-    <template v-slot:[`item.join`]="{ item }">
-      <v-icon v-if="isLogged" medium class="mr-2" @click="joinServer(item)" >mdi-play-network</v-icon>
-      <pre v-else>Non connecté!</pre>
-    </template>
-    
-    </v-data-table>
-  </v-card>
-
-  <v-card v-show="connection == 1">
-    <v-card-title>
-      Connexion au serveur ...
-      <v-spacer></v-spacer>
-      <v-progress-circular
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
-    </v-card-title>
-  </v-card>
-
+<div class="table-container pt-4">
+      <table class="table">
+          <thead>
+            <tr>
+              <th v-for="(h,i) in headers" :key="i">{{h.text}}</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr v-for="(s, i) in servers" :key="i">
+                <th>{{s.name}}</th>
+                <th>{{s.nb_players}}</th>
+                <th>{{s.nb_tables}}</th>
+                <th>{{s.region}}</th>
+                <th>{{s.server_type}}</th>
+                <th>{{s.privacy}}</th>
+                <th>
+                    <button v-if="isLogged" @click="joinServer(s)">
+                      <span class="icon">
+                        <i class="mdi mdi-play-network"></i>
+                      </span>
+                      <span>GitHub</span>
+                    </button>
+                    <pre v-else>Non connecté!</pre>
+                </th>
+              </tr>
+          </tbody>
+      </table>
 </div>
 </template>
 
@@ -64,15 +51,15 @@
       servers() {
         // Or whatever criteria you decide on to represent that the
         // app state has finished loading.
-        return this.$store.state.server.list;
+        return this.$store.state.list;
       },
       connection() {
         // Or whatever criteria you decide on to represent that the
         // app state has finished loading.
-        return this.$store.state.server.connection;
+        return this.$store.state.connection;
       },
       isLogged() {
-        return this.$store.getters["user/isLogged"];
+        return this.$store.state.loggedIn;
       },
     },
     //====================================================================================================================

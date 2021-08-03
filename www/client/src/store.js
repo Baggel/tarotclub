@@ -9,18 +9,28 @@ const state = reactive({
     isInitialized: false,
 
     // User state
-    isIngame: true,
+    isIngame: false,
     loggedIn: false,
 
     // User info
     profile: {}
 });
 
-
+// =====================================================================================
+// SERVERS
+// =====================================================================================
 const setServers = function(list) {
     state.list = list;
 }
 
+const setCurrentServer = function(server) {
+  state.currentServer = server;
+  state.connection = 1;
+}
+
+// =====================================================================================
+// USER
+// =====================================================================================
 const setLoginSuccess = function(profile) {
   state.loggedIn = true;
   state.profile = profile;
@@ -31,6 +41,9 @@ const setLogout = function() {
   state.profile = {};
 }
 
+// =====================================================================================
+// APP
+// =====================================================================================
 const setInitialized = function() {
   state.isInitialized = true;
 }
@@ -38,58 +51,8 @@ const setInitialized = function() {
 export default { 
   state: readonly(state), 
   setServers,
+  setCurrentServer,
   setLoginSuccess,
   setLogout,
   setInitialized
 };
-
-
-/*
-CLEAR_SERVERS: (state) => {
-    state.list = [];
-},
-SET_CURRENT_SERVER: (state, server) => {
-    state.currentServer = server;
-    state.connection = 1;
-},
-  
-    setMessageAction(newValue) {
-      if (this.debug) {
-        console.log('setMessageAction triggered with', newValue)
-      }
-  
-      this.state.message = newValue
-    },
-  
-    clearMessageAction() {
-      if (this.debug) {
-        console.log('clearMessageAction triggered')
-      }
-  
-      this.state.message = ''
-    }
-  }
-  
-
-const state = {
-    
-}
-
-const mutations = {
-    SET_INITIALIZED: (state, status) => {
-        state.isinitialized = status;
-    }
-}
-
-const debug = process.env.NODE_ENV !== 'production'
-
-export default new Vuex.Store({
-    modules: {
-        user: UserStore, 
-        server: ServerStore
-    },
-    state,
-    mutations,
-    strict: debug
-});
- */
