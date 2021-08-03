@@ -143,13 +143,13 @@ function signIn(req, reply)
 
 function resetPassword (req, reply)
 {
-  if (!req.body.username) {
+  if (!req.body.email) {
       reply.code(200).send({
         success: false,
-        message: 'username required'
+        message: 'email required'
       });
   } else {
-    queries.getUserByEmail(req.body.username).then((data) => {
+    queries.getUserByEmail(req.body.email).then((data) => {
 
       if (data.length > 0) {
         if (AccessUtil.isActive(data[0].status)) {

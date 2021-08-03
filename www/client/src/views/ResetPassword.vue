@@ -1,65 +1,58 @@
 <template>
 
     <!-- RESET PASSWORD -->
+<div class="container " style="max-width: 400px;">
+    <div class="card p-4">
+    <h1 class="title has-text-centered">{{$t('message.resetPassword')}}</h1>
 
-    <v-card width="400px" class="mx-auto" style="text-align:center; margin-top:100px; margin-bottom:50px">
-        <v-col cols="12">
-            <v-card class="mx-auto" width="360px" elevation="0">
-                <h1 style="padding-bottom:10px">Réinitialisation du mot de passe</h1>
-                <p>Entrez votre adresse e-mail, vous recevrez message contenant un lien de réinitialisation.</p>
+    <form>
+        <p class="mb-5">Entrez votre adresse e-mail, vous recevrez message contenant un lien de réinitialisation.</p>
                 
-                <!-- RESET PASSWORD FORM -->
-                <v-card elevation="0" class="mx-auto" width="300px" style="padding-bottom:10px;">
-                    <form style="padding-bottom:50px;" @submit="checkForm">
-                       <v-text-field
-                            name="username"
-                            value=""
-                            type="text" 
-                            label="Adresse e-mail"
-                            v-model="username"
-                            required
-                        ></v-text-field>
+        <div class="field">
+            <div class="control">
+                <input class="input is-medium" type="email" autocomplete="on"  v-model="email" :placeholder="$t('message.email')">
+            </div>
+        </div>
 
-                        <v-checkbox
-                            v-model="checkbox"
-                            label="Je suis un humain"
-                        ></v-checkbox>
+        <div class="field">
+            <label class="checkbox">
+                <input type="checkbox" v-model="checkbox"> Je suis un robot
+            </label>
+        </div>
 
-                        <v-text-field
-                            name="email"
-                            type="email" 
-                            label="email"
-                            v-model="email"
-                            autocomplete="off"
-                            style="display:none !important; visibility:hidden !important;"
-                        ></v-text-field>
+        <div class="field">
+            <div class="control">
+                <input type="text" v-model="potmiel" autocomplete="off" style="display:none !important; visibility:hidden !important;">
+            </div>
+        </div>
 
-                        <v-btn class="mr-4" type="submit">Valider</v-btn>
-                        <v-btn >Effacer</v-btn>
-                    </form>
+        <button class="button is-block is-primary is-fullwidth is-medium" @click="validate">{{$t('message.submit')}}</button>
 
-                    <p style="display:inline;">Pas de compte ? </p><router-link to="/sign-up"><p style="display:inline;">Créer un compte.</p></router-link>
-                </v-card>
-            </v-card>
-        </v-col>
-    </v-card>
+        <br />
+        <p style="display:inline;">Pas de compte ? </p><router-link to="/sign-up"><p style="display:inline;">Créer un compte.</p></router-link>
+
+        </form>
+    </div>
+</div>
+
 </template>
 
 <script>
+
 export default {
     data: () => ({
-        username: '',
+        potmiel: '',
         email: '',
-        checkbox: false
+        checkbox: true
     }),
 
     methods: {
-        checkForm (e) {
+        validate (e) {
             e.preventDefault();
-            if (this.checkbox && this.email === '') {
-                this.$api.requestResetPassword( { username: this.username }).then( result => {
+            if (!this.checkbox && this.potmiel === '') {
+                this.$api.requestResetPassword( { email: this.email }).then( result => {
                     if (result.success) {
-                        this.$eventHub.emit('setAlert', 'Un email vous a été envoyé', 'success', 3000);
+                        this.$eventHub.emit('setAlert', this.$t('message.emailSent'), 'success', 3000);
                     } else {
                         this.$eventHub.emit('setAlert', 'Impossible de vous envoyer un email', 'error', 3000);
                     }

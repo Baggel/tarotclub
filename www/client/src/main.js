@@ -97,7 +97,10 @@ const messages = {
       badForm: 'The form still contains errors',
       userOrMail: "Username or e-mail",
       signup: 'Sign up',
-      signin: 'Log in'
+      signin: 'Log in',
+      resetPassword: "Password reset",
+      emailSent: "An e-mail has been sent",
+      setNewPass: "New password"
     }
   },
   fr: {
@@ -116,7 +119,10 @@ const messages = {
       badForm: 'Le formulaire contient des erreurs',
       userOrMail: "Nom utilisateur ou e-mail",
       signup: "S'inscrire",
-      signin: 'Connexion'
+      signin: 'Connexion',
+      resetPassword: "Réinitialisation du mot de passe",
+      emailSent: "Un email vous a été envoyé",
+      setNewPass: "Nouveau mot de passe"
     }
   }
 }
