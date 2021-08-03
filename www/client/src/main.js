@@ -20,8 +20,7 @@ import Signin from './views/Signin.vue';
 import Signup from './views/Signup.vue';
 import NewPassword from './views/NewPassword.vue';
 import Dashboard from './views/Dashboard.vue';
-// import GameView from './views/GameView.vue';
-
+import GameView from './views/GameView.vue';
 
 // =====================================================================================
 // ROUTER
@@ -58,12 +57,12 @@ const router = createRouter({
         path: '/resetpass',
         name: 'resetpass',
         component: ResetPassword
-      },/*
+      },
       {
         path: '/game',
         name: 'game',
         component: GameView
-      },*/
+      },
       {
         path: '/docs',
         name: 'docs',
@@ -100,7 +99,10 @@ const messages = {
       signin: 'Log in',
       resetPassword: "Password reset",
       emailSent: "An e-mail has been sent",
-      setNewPass: "New password"
+      setNewPass: "New password",
+      home: 'Home',
+      playOnline: 'Play online',
+      docs: "Documentation",
     }
   },
   fr: {
@@ -122,7 +124,10 @@ const messages = {
       signin: 'Connexion',
       resetPassword: "Réinitialisation du mot de passe",
       emailSent: "Un email vous a été envoyé",
-      setNewPass: "Nouveau mot de passe"
+      setNewPass: "Nouveau mot de passe",
+      home: 'Accueil',
+      playOnline: 'Jouer en ligne',
+      docs: "Documentation",
     }
   }
 }
@@ -139,13 +144,15 @@ const i18n = createI18n({
 // =====================================================================================
 // VUE INSTANCE AND GLOBAL OBJECTS
 // =====================================================================================
+
+window.ev = {}
 const app = createApp(App).use(router).use(i18n);
 
-const eventHub = mitt();
+ev = mitt();
 const api = new Api();
 const tc = new TarotClient();
 
-app.config.globalProperties.$eventHub = eventHub;
+app.config.globalProperties.$eventHub = ev;
 app.config.globalProperties.$api = api;
 app.config.globalProperties.$tc = tc;
 app.config.globalProperties.$store = store;

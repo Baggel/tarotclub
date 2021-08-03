@@ -71,6 +71,7 @@
 import Servers from "../components/Servers.vue";
 import Board from "../components/Board.vue";
 import Lobby from "../components/Lobby.vue";
+import Module from '../../public/tarotclub.js';
 
 
 export default {
@@ -84,6 +85,7 @@ export default {
       },
     ],
     view: { w: 0, h: 0 },
+    instance: null
   }),
   components: { Servers, Lobby, Board },
   computed: {
@@ -94,6 +96,18 @@ export default {
       return this.$tc.isReady;
     },
   },
+  created() {
+      this.instance = Module({
+            onRuntimeInitialized() {
+              console.log("[GAMEVIEW] Started");
+             // this.result = instance._Add(1,2);
+            }
+      });
+
+      this.$eventHub.on('log', (text) => {
+          console.log("[GAMEVIEW] " + text);
+      });
+  }
 
 };
 </script>

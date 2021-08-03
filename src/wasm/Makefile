@@ -54,8 +54,8 @@ $(addprefix $(OUTDIR)/, %.o): %.cpp
 	$(CXX) $(CPPFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
 
 all: $(OUTDIR)/$(TARGET_EXEC)
-	cp $(OUTDIR)/$(TARGET_EXEC) ../../../tarotclub-www/client/src/
-	cp $(OUTDIR)/$(BASE_NAME).wasm ../../../tarotclub-www/client/public/
+	cp $(OUTDIR)/$(TARGET_EXEC) ../../www/client/public/
+	cp $(OUTDIR)/$(BASE_NAME).wasm ../../www/client/public/
 
 clean:
 	$(RM) -rf $(OUTDIR)

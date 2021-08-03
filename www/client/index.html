@@ -88,6 +88,77 @@
         max-width: fit-content;
     }
 }
+/* ====================================  TAROT ================================ */
+@font-face { font-family: kanzlei; src: url('./fonts/kanzlei.ttf'); }
+        svg text {
+            -webkit-user-select: none;
+               -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+        }
+        svg text::selection {
+            background: none;
+        }
+
+        .board-container {
+            width: 100%; 
+            height: 100%;
+        }
+
+        .board {
+            border: 5px solid black;
+            text-align: center;
+            margin: auto;
+            background: radial-gradient(#40845c, #026a2d); /* vert foncé: #026a2d; */
+        }
+
+:root {
+  --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --msger-bg: #fff;
+  --border: 2px solid #ddd;
+  --left-msg-bg: #ececec;
+  --right-msg-bg: #579ffb;
+   overflow: hidden;
+}
+
+
+/* Classe utilisée pour les écrans larges : les éléments sont mis en ligne */
+.gameview-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  height: 100vh;
+  background-image: var(--body-bg);
+}
+
+.board-area {
+  background-color: teal;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.lobby-area {
+  background-color: maroon;
+  width: 400px;
+  flex-grow: 0;
+}
+
+@media screen and (max-width: 1024px)
+{
+  /* PETITS ECRANS : DISPOSITION EN COLONNE */
+  .gameview-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-image: var(--body-bg);
+  }
+
+  .lobby-area {
+    width: 100%;
+  }
+}
 
 
     </style>
@@ -96,4 +167,11 @@
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
+  <script>
+    function jsDeliver(message)
+    {
+      window.ev.emit('log', message); 
+    }
+  </script>
+
 </html>

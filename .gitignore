@@ -29,3 +29,9 @@ www/server/node_modules/
 www/client/node_modules/
 
 workspace/logs/
+
+*.log
+
+www/client/public/tarotclub.js
+
+www/client/public/tarotclub.wasm

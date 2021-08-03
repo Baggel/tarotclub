@@ -85,9 +85,9 @@ export default {
       return {
         burger: false,
         menuItems: [
-          { text: 'Accueil', icon: 'mdi mdi-home', page: 'home', user: true },
-          // { text: 'Jouer en ligne', icon: 'mdi mdi-cards-playing-outline', page: 'game', user: true },
-          { text: 'Documentation', icon: 'mdi mdi-file-document', page: 'docs', user: true },
+          { text: this.$t('message.home'), icon: 'mdi mdi-home', page: 'home', user: true },
+          { text: this.$t('message.playOnline'), icon: 'mdi mdi-cards-playing-outline', page: 'game', user: true },
+          { text: this.$t('message.docs'), icon: 'mdi mdi-file-document', page: 'docs', user: true },
         ],
         evtSource: null
       }

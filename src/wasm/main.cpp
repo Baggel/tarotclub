@@ -181,9 +181,6 @@ int EMSCRIPTEN_KEEPALIVE fib(int n){
     else
         return fib(n - 1) + fib(n - 2);
 }
-EM_JS(void, call_js_agrs, (const char *title, int lentitle, const char *msg, int lenmsg), {
-    jsMethodAgrs(UTF8ToString(title, lentitle), UTF8ToString(msg, lenmsg));
-});
 
 int jsDeliver(const char* text);
 
