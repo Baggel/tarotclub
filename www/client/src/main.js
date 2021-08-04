@@ -8,7 +8,8 @@ import App from './App.vue'
 import Api from './api.js'
 import mitt from './mitt.js';
 import store from './store.js';
-import TarotClient from './tarot-client.js'
+import TarotClient from './tarot-client.js';
+import "./style.scss"
 
 // =====================================================================================
 // VIEWS

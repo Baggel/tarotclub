@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Titillium:400,700');
+
+// Update Bulma's global variables
+$family-sans-serif: "Titillium", sans-serif;
+/*
+$grey-dark: #757763;
+$grey-light:#D0D1CD;
+$primary: #8A4D76;
+$link: #D5D0CD;
+*/
+$grey-dark: #2c241c;
+$grey-light:#aa9a7e;
+$primary: #0a5c43;
+$link: #9c8658;
+
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: #EFF0EB;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/bulma.sass";
+
+// @import "../node_modules/bulma/sass/base/_all.sass";
+// @import "../node_modules/bulma/sass/components/_all.sass";
+// @import "../node_modules/bulma/sass/elements/_all.sass";
+// @import "../node_modules/bulma/sass/form/_all.sass";
+// @import "../node_modules/bulma/sass/grid/_all.sass";
+// @import "../node_modules/bulma/sass/helpers/_all.sass";
+// @import "../node_modules/bulma/sass/layout/_all.sass";
+// @import "../node_modules/bulma/sass/utilities/_all.sass";

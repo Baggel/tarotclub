@@ -1,7 +1,7 @@
 <template>
 <div style="height:100vh; width=100vw;">
 
-<nav class="navbar is-fixed-top is-link" role="navigation" aria-label="main navigation">
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="https://www.tarotclub.fr">
       <img src="./assets/logo.png" width="30" height="50">
@@ -62,9 +62,10 @@
     </div>
   </div>
 </nav>
-<div style="padding-top:3.5em;">
+
+
 <router-view></router-view>
-</div>
+
 </div>
 </template>
 
